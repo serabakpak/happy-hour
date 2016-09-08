@@ -17,7 +17,7 @@ var db = require('../models');
 
 
 
-// GET /api/albums
+// GET /api/reviews
 function index(req, res) {
 	//FILL ME IN!
 }
