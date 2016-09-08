@@ -48,6 +48,13 @@
         <div class="col m4">
           <blockquote>{{userReview}}</blockquote>
           <p>{{username}}</p>
+
+          <input id="updateInput" value="{{userReview}}">
+          <button class="btn waves-effect waves-light" id="saveBtn">Save</button>
+          <button class="btn waves-effect waves-light" id="cancelBtn">Cancel</button>
+          <button class="btn waves-effect waves-light" id="updateBtn">Update</button>
+          <button class="btn waves-effect waves-light" id="deleteBtn">Delete</button>
+
         </div>
         {{/each}}
       </script>
