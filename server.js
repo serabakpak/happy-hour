@@ -20,6 +20,21 @@ var controllers = require('./controllers');
  * ROUTES *
  **********/
 
+// var sampleReviews = [{
+//   username: 'SeraController',
+//   userReview: 'Awesome place!'
+//   },
+//   {
+//   username: 'Abby',
+//   userReview: 'Cool drinks!'
+//   },
+//   {
+//   username: 'Lily',
+//   userReview: 'Best Happy Hour EVER!'
+//   }
+// ];
+
+
 /*
  * HTML Endpoints
  */

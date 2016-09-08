@@ -2,24 +2,16 @@
  * DATABASE *
  ************/
 var db = require('../models');
-/* hard-coded data */
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // GET /api/reviews
 function index(req, res) {
-	//FILL ME IN!
+  db.Review.find({})
+  .exec(function(err, reviews){
+    if (err) {
+      return console.log(err);
+    }
+    res.json(reviews);
+  })
 }
 
 
