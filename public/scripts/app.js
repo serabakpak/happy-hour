@@ -22,5 +22,12 @@ var sampleReviews = [{
 $(document).ready(function() {
 	console.log('app.js loaded!');
 
+	var reviewSource = $('#review-template').html();
+	var reviewTemplate = Handlebars.compile(reviewSource);
+	var reviewHtml = reviewTemplate({reviews: sampleReviews});
+	$('#one-review').append(reviewHtml);
+	console.log(reviewHtml); 
+
+
 
 });

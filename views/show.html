@@ -14,23 +14,66 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
+    <script src="../public/scripts/app.js"></script>
 </head>
 
 <body>
-    <nav>
-       <div class="row">
-          <img src="CHANGE ME" alt="CHANGE ME" class="logo">
-            <ul class="main-nav">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">View Happy Hours</a></li>
-              <li><a href="#">About Us</a></li>  
-           </ul>
-      </div>
-   </nav>
-   <section class="container" id="listing-image">
+  <section class="container" id="listing-section">    
+    <div class="row">
+      <nav class="main-nav">
+          
+            <li><a href="#">Home</a></li>
+            <li><a href="#">View Happy Hours</a></li>
+            <li><a href="#">About Us</a></li>  
+          </ul>
+          
+      </nav>
+    </div>
+    <div id="listing-image">
+      <img src="CHANGE ME" alt="CHANGE ME" class="logo">
 
-   </section>
+    </div>
+
+  </section>
+
+  <section class="container" id="reviews-section">
+    <div class="row">
+      <h2>Reviews</h2>
+    </div>
+    
+
+
+
+    <div class="row" id="one-review">
+      <script id="review-template" type="text/x-handlebars-template">  
+        {{#each reviews}}
+        <div class="col-md-4">
+          <blockquote>{{userReview}}</blockquote>
+          <p>{{username}}</p>
+        </div>
+        {{/each}}
+      </script>
+      
+    
+
+
+    </div>
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+
 
 
 
