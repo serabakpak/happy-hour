@@ -9,7 +9,12 @@ var sampleReviews = [{
 	{
 	username: 'Abby',
 	userReview: 'Cool drinks!'
-	}];
+	},
+	{
+	username: 'Lily',
+	userReview: 'Best Happy Hour EVER!'
+	}
+	];
 
 /* end of hard-coded data */
 
