@@ -24,11 +24,24 @@ var controllers = require('./controllers');
  * HTML Endpoints
  */
 
+//will need to change to index.html if get initial homepage up:
 app.get('/', function homepage (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+  res.sendFile(__dirname + '/views/show.html');
 });
 
+/*
+ * JSON API Endpoints
+ */
 
+app.get('/api', controllers.api.index);
+
+app.get('/api/reviews', controllers.reviews.index);
+
+app.post('/api/reviews', controllers.reviews.create);
+
+/**********
+ * SERVER *
+ **********/
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000, function () {
