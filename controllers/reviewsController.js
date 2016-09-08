@@ -1,26 +1,29 @@
 /************
  * DATABASE *
  ************/
-var db = require('../models');
+//var db = require('../models');
 /* hard-coded data */
-
-
-
-
-
-
-
-
-
-
-
-
+var sampleReviews = [{
+  username: 'SeraController',
+  userReview: 'Awesome place!'
+  },
+  {
+  username: 'Abby',
+  userReview: 'Cool drinks!'
+  },
+  {
+  username: 'Lily',
+  userReview: 'Best Happy Hour EVER!'
+  }
+];
 
 
 // GET /api/reviews
 function index(req, res) {
-	//FILL ME IN!
+  res.json(sampleReviews);
 }
+
+
 
 
 function create(req, res) {

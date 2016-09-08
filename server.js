@@ -20,6 +20,21 @@ var controllers = require('./controllers');
  * ROUTES *
  **********/
 
+// var sampleReviews = [{
+//   username: 'SeraController',
+//   userReview: 'Awesome place!'
+//   },
+//   {
+//   username: 'Abby',
+//   userReview: 'Cool drinks!'
+//   },
+//   {
+//   username: 'Lily',
+//   userReview: 'Best Happy Hour EVER!'
+//   }
+// ];
+
+
 /*
  * HTML Endpoints
  */
@@ -36,6 +51,7 @@ app.get('/', function homepage (req, res) {
 app.get('/api', controllers.api.index);
 
 app.get('/api/reviews', controllers.reviews.index);
+
 
 app.post('/api/reviews', controllers.reviews.create);
 
