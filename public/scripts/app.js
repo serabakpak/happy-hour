@@ -5,6 +5,10 @@ var allReviews = [];
 $(document).ready(function() {
 	console.log('app.js loaded!');
 
+	$('.modal-trigger').leanModal();
+  
+
+
 
 	$.ajax({
 		method: 'GET',
