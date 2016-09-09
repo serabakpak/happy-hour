@@ -4,7 +4,7 @@
 var db = require("./models");
 
 var reviewsList = [{
-  username: 'SeraController',
+  username: 'Sera',
   userReview: 'Awesome place!'
   },
   {

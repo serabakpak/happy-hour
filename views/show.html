@@ -8,6 +8,7 @@
 	<!-- STYLESHEETS -->
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <link rel="stylesheet" href="/styles/main.css">
 
   <!-- VENDOR SCRIPTS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -49,11 +50,19 @@
           <blockquote>{{userReview}}</blockquote>
           <p>{{username}}</p>
 
-          <input id="updateInput" value="{{userReview}}">
-          <button class="btn waves-effect waves-light" id="saveBtn">Save</button>
-          <button class="btn waves-effect waves-light" id="cancelBtn">Cancel</button>
-          <button class="btn waves-effect waves-light" id="updateBtn">Update</button>
-          <button class="btn waves-effect waves-light" id="deleteBtn">Delete</button>
+          
+          <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}">
+            <span><button class="updateBtn btn waves-effect waves-light" id="updateBtn">Update</button></span>
+          </a>
+          <a href="javascript:void(0)" class="delete-review">
+            <button class="btn waves-effect waves-light" id="deleteBtn">Delete</button>
+          </a>
+          <!-- form to update review -->
+          <div class="collapse" id="update-{{_id}}">
+            <input id="updateInput" value="{{userReview}}">
+            <button class="btn waves-effect waves-light" id="saveBtn" data-id={{_id}}>Save</button>
+            <button class="btn waves-effect waves-light" id="cancelBtn">Cancel</button>
+          </div>
 
         </div>
         {{/each}}
@@ -85,6 +94,7 @@
 
 
 
+
                 <div class="row">
                   <div class="input-field col s12">
                     <textarea id="image_description" type="text" class="materialize-textarea validate"></textarea>
@@ -106,8 +116,4 @@
 
   </section>
   
-
-
-
-
 </body>
