@@ -43,8 +43,13 @@
       <h2>Reviews</h2>
     </div>
     
-    <div class="row" id="one-review">
+    <div class="row" id="review-list">
       
+
+
+
+
+
     </div>
   </section>
  
@@ -87,23 +92,23 @@
 
   <!-- moved the template down here because we don't want to mistakenly manipulate the DOM where it will affect the template -->
   <script id="review-template" type="text/x-handlebars-template">  
-    {{#each reviews}}
-    <div class="col m4">
+    
+    <div class="col m4" id="one-review" data-id="{{_id}}">
       <blockquote>{{userReview}}</blockquote>
       <p>{{username}}</p>
       <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}">
         <span><button class="updateBtn btn waves-effect waves-light" id="updateBtn">Update</button></span>
       </a>
       <a href="javascript:void(0)" class="delete-review">
-        <button class="btn waves-effect waves-light" id="deleteBtn">Delete</button>
+        <button class="delete-button btn waves-effect waves-light" id="delete-btn" data-id="{{_id}}">Delete</button>
       </a>
       <!-- form to update review -->
       <div class="collapse" id="update-{{_id}}">
         <input id="updateInput" value="{{userReview}}">
-        <button class="btn waves-effect waves-light" id="saveBtn" data-id={{_id}}>Save</button>
-        <button class="btn waves-effect waves-light" id="cancelBtn">Cancel</button>
+        <button class="btn waves-effect waves-light" id="save-btn" data-id="{{_id}}">Save</button>
+        <button class="btn waves-effect waves-light" id="cancel-btn">Cancel</button>
       </div>
     </div>
-    {{/each}}
+    
   </script>
 </body>
