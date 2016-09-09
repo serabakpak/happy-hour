@@ -54,6 +54,8 @@ app.get('/api/reviews', controllers.reviews.index);
 
 app.post('/api/reviews', controllers.reviews.create);
 
+app.delete('/api/reviews/:reviewId', controllers.reviews.destroy);
+
 /**********
  * SERVER *
  **********/

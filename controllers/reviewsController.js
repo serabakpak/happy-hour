@@ -10,6 +10,7 @@ function index(req, res) {
     if (err) {
       return console.log(err);
     }
+    console.log(reviews);
     res.json(reviews);
   })
 }
@@ -27,7 +28,10 @@ function show(req, res) {
 }
 
 function destroy(req, res) {
-  // FILL ME IN !
+  db.Review.findOneAndRemove({ _id: req.params.reviewId }, function(err, foundReview){
+  // note you could send just send 204, but we're sending 200 and the deleted entity
+  res.json(foundReview);
+  });
 }
 
 function update(req, res) {
