@@ -1,16 +1,13 @@
 /* CLIENT-SIDE JS*/
 
 var allReviews = [];
-
+var reviewSource;
+var reviewTemplate;
 $(document).ready(function() {
 	console.log('app.js loaded!');
 
 	$('.modal-trigger').leanModal();
   
-
-
-
-
 	//render all reviews
 
 	$.ajax({
@@ -20,29 +17,52 @@ $(document).ready(function() {
 		error: onError
 	})
 
+	// create review
+
+	$('#form-modal').on('submit', function (e) {
+		e.preventDefault();
+		var $modal = $('#modal1');
+		var $usernameField = $('#username');
+		var $userReviewField = $('#user-review');
+
+		$.ajax({
+			method: 'POST',
+			url: '/api/reviews',
+			data: {
+			    username: $usernameField.val(),
+			    userReview: $userReviewField.val()
+			  },
+			// data: $(this).serialize(),
+			success: onCreateSuccess,
+			error: onError
+		})
+
+	})
+
+
 	//update review
 
-	$('#one-review').on('click', '#updateBtn', function(){
-		$(this).parent().find('.collapse').removeClass('collapse');
-		console.log('update btn clicked');
-	// $('updateBtn').on('click', function(){
+	// $('#one-review').on('click', '#updateBtn', function(){
+	// 	$(this).parent().find('.collapse').removeClass('collapse');
 	// 	console.log('update btn clicked');
-	// 	$('.collapse').slideToggle('slow');
+	// // $('updateBtn').on('click', function(){
+	// // 	console.log('update btn clicked');
+	// // 	$('.collapse').slideToggle('slow');
+	// // });
+	// // $('#one-review').on('click', '#updateBtn', function(event){
+	// // 	event.preventDefault();
+	// // 	$('.collapse').toggle('visibility', 'visible');
+	// 	//find closest id:
+	// 	//var reviewId = $('#one-review').closest('.collapse').attr('data-id');
 	// });
-	// $('#one-review').on('click', '#updateBtn', function(event){
-	// 	event.preventDefault();
-	// 	$('.collapse').toggle('visibility', 'visible');
-		//find closest id:
-		//var reviewId = $('#one-review').closest('.collapse').attr('data-id');
-	});
-	var updateReview = $(this).serialize();
-	$.ajax({
-		method: 'PUT',
-		url: '/api/reviews/:id',
-		data: updatedReview,
-		success: onUpdateSuccess,
-		error: onError
-	});
+	// var updateReview = $(this).serialize();
+	// $.ajax({
+	// 	method: 'PUT',
+	// 	url: '/api/reviews/:id',
+	// 	data: updatedReview,
+	// 	success: onUpdateSuccess,
+	// 	error: onError
+	// });
 
 });
 
@@ -52,12 +72,10 @@ function onSuccess(json) {
 	renderReviews(allReviews);
 }
 
-function renderReviews(reviews) {
-	var reviewSource = $('#review-template').html();
-	var reviewTemplate = Handlebars.compile(reviewSource);
-	var reviewHtml = reviewTemplate({reviews: allReviews});
-	$('#one-review').append(reviewHtml);
-	console.log(reviewHtml); 
+function onCreateSuccess(json) {
+	console.log('created', json);
+	allReviews.push(json);
+	renderReviews(allReviews);
 }
 
 function onUpdateSuccess(updatedReview) {
@@ -70,4 +88,13 @@ function onUpdateSuccess(updatedReview) {
 
 function onError(error) {
 	console.log('error is'+ error);
+}
+
+function renderReviews(reviews) {
+	$('#one-review').empty();
+	reviewSource = $('#review-template').html();
+	reviewTemplate = Handlebars.compile(reviewSource);
+	reviewHtml = reviewTemplate({reviews: allReviews});
+	$('#one-review').append(reviewHtml);
+	//console.log(reviewHtml); 
 }
