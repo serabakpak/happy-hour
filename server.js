@@ -16,6 +16,10 @@ app.use('/vendor', express.static(__dirname + '/bower_components'));
 app.use(bodyParser.urlencoded({ extended: true }));
 var controllers = require('./controllers');
 
+//method-override for form:
+// var methodOverride = require('method-override')
+// app.use(methodOverride('_method'));
+
 /**********
  * ROUTES *
  **********/
@@ -53,6 +57,8 @@ app.get('/api', controllers.api.index);
 app.get('/api/reviews', controllers.reviews.index);
 
 app.post('/api/reviews', controllers.reviews.create);
+
+app.put('/api/reviews/:id', controllers.reviews.update);
 
 /**********
  * SERVER *

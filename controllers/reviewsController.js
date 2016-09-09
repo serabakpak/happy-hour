@@ -28,7 +28,21 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
-  // FILL ME IN !
+  console.log('updating via controller', req.body);
+  db.Review.findById(req.params.reviewId, function(err, foundReview){
+    if(err){
+      console.log('error with updating in controller' + err);
+    } else {
+      foundReview.userReview = req.body.userReview;
+      foundReview.save(function(err, savedReview){
+        if(err) {
+          console.log('issue with saving updates via controller' + err);
+        } else {
+          res.json(savedReview);
+        }
+      });
+    }
+  });
 }
 
 

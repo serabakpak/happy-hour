@@ -5,14 +5,7 @@ var allReviews = [];
 $(document).ready(function() {
 	console.log('app.js loaded!');
 
-	$('.modal-trigger').leanModal();
-  
-
-
-
-
 	//render all reviews
-
 	$.ajax({
 		method: 'GET',
 		url: '/api/reviews',
@@ -21,30 +14,31 @@ $(document).ready(function() {
 	})
 
 	//update review
+	$('#one-review').on('click', '.save-button', function(event){
+		event.preventDefault();
+		console.log($(this));
+		var reviewId = $(this).closest('.save-button').attr('data-id');
+		console.log(reviewId);
+		var reviewToUpdate = allReviews.find(function(review){
+			return review._id == reviewId;
+		});
+		var updatedReview = $(this).serialize();
+		console.log('update review', reviewId);
 
-	$('#one-review').on('click', '#updateBtn', function(){
-		$(this).parent().find('.collapse').removeClass('collapse');
-		console.log('update btn clicked');
-	// $('updateBtn').on('click', function(){
-	// 	console.log('update btn clicked');
-	// 	$('.collapse').slideToggle('slow');
-	// });
-	// $('#one-review').on('click', '#updateBtn', function(event){
-	// 	event.preventDefault();
-	// 	$('.collapse').toggle('visibility', 'visible');
-		//find closest id:
-		//var reviewId = $('#one-review').closest('.collapse').attr('data-id');
-	});
-	var updateReview = $(this).serialize();
 	$.ajax({
 		method: 'PUT',
-		url: '/api/reviews/:id',
+		url: '/api/reviews/' + reviewId,
 		data: updatedReview,
-		success: onUpdateSuccess,
+		success: function onUpdateSuccess(json) {
+			reviewId = updatedReview._id;
+			$('[data-id=' + reviewId + ']').remove(allReviews);
+			renderReviews(updatedReview);
+			console.log(updatedReview);
+		},
 		error: onError
 	});
-
-});
+	})
+})
 
 function onSuccess(json) {
 	console.log(json);
@@ -60,12 +54,12 @@ function renderReviews(reviews) {
 	console.log(reviewHtml); 
 }
 
-function onUpdateSuccess(updatedReview) {
-	// var reviewId = updatedReview._id;
-	// $('[data-id=' + reviewId + ']').remove();
-	// renderReviews(updatedReview);
-	console.log(updatedReview);
-}
+// function onUpdateSuccess(updatedReview) {
+// 	var reviewId = updatedReview._id;
+// 	$('[data-id=' + reviewId + ']').remove();
+// 	renderReviews(updatedReview);
+// 	console.log(updatedReview);
+// }
 
 
 function onError(error) {

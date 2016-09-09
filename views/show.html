@@ -52,16 +52,18 @@
 
           
           <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}">
-            <span><button class="updateBtn btn waves-effect waves-light" id="updateBtn">Update</button></span>
+            <span><button class="update-button btn waves-effect waves-light" id="updateBtn">Update</button></span>
           </a>
           <a href="javascript:void(0)" class="delete-review">
-            <button class="btn waves-effect waves-light" id="deleteBtn">Delete</button>
+            <button class="delete-button btn waves-effect waves-light" id="deleteBtn">Delete</button>
           </a>
           <!-- form to update review -->
-          <div class="collapse" id="update-{{_id}}">
+          <div class="collapse update-div" id="update-{{_id}}">
             <input id="updateInput" value="{{userReview}}">
-            <button class="btn waves-effect waves-light" id="saveBtn" data-id={{_id}}>Save</button>
-            <button class="btn waves-effect waves-light" id="cancelBtn">Cancel</button>
+            <!-- input to override due to form: -->
+            <input type="hidden" name="_method" value="delete"/>
+            <button class="save-button btn waves-effect waves-light" id="saveBtn" data-id={{_id}}>Save</button>
+            <button class="cancel-button btn waves-effect waves-light" id="cancelBtn">Cancel</button>
           </div>
 
         </div>
