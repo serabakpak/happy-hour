@@ -14,9 +14,12 @@ function index(req, res) {
   })
 }
 
-
 function create(req, res) {
-	//FILL ME IN!
+  db.Review.create(req.body, function(err, review) {
+    if (err) { console.log('error', err); }
+  console.log(review);
+  res.json(review);
+  });
 }
 
 function show(req, res) {
@@ -30,8 +33,6 @@ function destroy(req, res) {
 function update(req, res) {
   // FILL ME IN !
 }
-
-
 
 // export public methods here
 module.exports = {
