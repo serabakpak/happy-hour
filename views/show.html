@@ -67,20 +67,53 @@
         </div>
         {{/each}}
       </script>
+      </div>
+    </div>
+  </section>
+  <section class="container" id="modal-section">
+    <div class="row">
+      <div class="row">
       
-    
+      <!-- Modal Trigger -->
+        <button class="waves-effect waves-light btn modal-trigger" data-target="modal1" id="add-review-btn">Add Review</button>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>Add a Review</h4>
+
+            <div class="row">
+              <form class="col s12">
+                <div class="row modal-form-row">
+                  <div class="input-field col s12">
+                    <input id="name" type="text" class="validate">
+                    <label for="name">Your Name</label>
+                  </div>
+                </div>
+                
 
 
+
+
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="image_description" type="text" class="materialize-textarea validate"></textarea>
+                    <label for="image_description">Your Review</label>
+                  </div>
+                </div>  
+
+              </form>
+
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+          </div>
+        </div>
     </div>
 
 
-
-
-
   </section>
-
-
-
-  <!-- jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  
 </body>

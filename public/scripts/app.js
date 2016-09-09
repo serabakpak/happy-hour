@@ -5,7 +5,14 @@ var allReviews = [];
 $(document).ready(function() {
 	console.log('app.js loaded!');
 
+	$('.modal-trigger').leanModal();
+  
+
+
+
+
 	//render all reviews
+
 	$.ajax({
 		method: 'GET',
 		url: '/api/reviews',
