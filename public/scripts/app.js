@@ -58,10 +58,6 @@ $('#review-list').on('click', '#cancel-btn', function(){
 		};
 
 		console.log('Puting data for review', reviewId, data);
-	// var updatedReview = $(this).parent().find('#updateInput').val();
-	// var reviewId = $(this).closest('.save-button').attr('data-id');
-	// console.log('reviewId', reviewId);
-	// var data = {userReview: updatedReview};
 
 	$.ajax({
 		method: 'PUT',
