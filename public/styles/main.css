@@ -1,4 +1,7 @@
-.collapse {
-/*	visibility: hidden;
-*/}
+.hidden {
+	visibility: hidden;
+}
 
+/*.save-cancel-btn {
+	visibility: hidden;
+}*/

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>CHANGE ME</title>
-	<!-- STYLESHEETS -->
+  
+  <title>CHANGE ME</title>
+  <!-- STYLESHEETS -->
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
   <link rel="stylesheet" href="/styles/main.css">
@@ -43,38 +43,19 @@
       <h2>Reviews</h2>
     </div>
     
-    <div class="row" id="one-review">
-      <script id="review-template" type="text/x-handlebars-template">  
-        {{#each reviews}}
-        <div class="col m4">
-          <blockquote>{{userReview}}</blockquote>
-          <p>{{username}}</p>
+    <div class="row" id="review-list">
+      
 
-          
-          <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}">
-            <span><button class="update-button btn waves-effect waves-light" id="updateBtn">Update</button></span>
-          </a>
-          <a href="javascript:void(0)" class="delete-review">
-            <button class="delete-button btn waves-effect waves-light" id="deleteBtn">Delete</button>
-          </a>
-          <!-- form to update review -->
-          <div class="collapse update-div" id="update-{{_id}}">
-            <input id="updateInput" value="{{userReview}}">
-            <!-- input to override due to form: -->
-            <input type="hidden" name="_method" value="delete"/>
-            <button class="save-button btn waves-effect waves-light" id="saveBtn" data-id={{_id}}>Save</button>
-            <button class="cancel-button btn waves-effect waves-light" id="cancelBtn">Cancel</button>
-          </div>
 
-        </div>
-        {{/each}}
-      </script>
-      </div>
+
+
+
     </div>
   </section>
+ 
   <section class="container" id="modal-section">
     <div class="row">
-      <div class="row">
+      
       
       <!-- Modal Trigger -->
         <button class="waves-effect waves-light btn modal-trigger" data-target="modal1" id="add-review-btn">Add Review</button>
@@ -85,37 +66,53 @@
             <h4>Add a Review</h4>
 
             <div class="row">
-              <form class="col s12">
+              <form class="col s12" method="POST" action="/api/reviews" id="form-modal">
                 <div class="row modal-form-row">
                   <div class="input-field col s12">
-                    <input id="name" type="text" class="validate">
-                    <label for="name">Your Name</label>
+                    <input id="username" type="text" class="validate">
+                    <label for="username">Your Name</label>
                   </div>
                 </div>
-                
-
-
-
-
                 <div class="row">
                   <div class="input-field col s12">
-                    <textarea id="image_description" type="text" class="materialize-textarea validate"></textarea>
-                    <label for="image_description">Your Review</label>
+                    <textarea id="user-review" type="text" class="materialize-textarea validate"></textarea>
+                    <label for="user-review">Your Review</label>
+                  </div>
+                  <div class="modal-footer">
+                    <input type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" id="submit-btn">
                   </div>
                 </div>  
-
               </form>
-
-
             </div>
           </div>
-          <div class="modal-footer">
-            <a class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
-          </div>
         </div>
-    </div>
 
 
   </section>
-  
+
+  <!-- moved the template down here because we don't want to mistakenly manipulate the DOM where it will affect the template -->
+  <script id="review-template" type="text/x-handlebars-template">  
+    
+    <div class="col m4" id="one-review" data-id="{{_id}}">
+      <blockquote>{{userReview}}</blockquote>
+      <p>{{username}}</p>
+      <div class="update-delete-btn">
+        <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}">
+          <button class="update-button btn waves-effect waves-light" id="update-btn">Update</button>
+        </a>
+        <a href="javascript:void(0)" class="delete-review">
+          <button class="delete-button btn waves-effect waves-light" id="delete-btn" data-id="{{_id}}">Delete</button>
+        </a>
+      </div>
+      <!-- form to update review -->
+      <div class="collapse" id="update-{{_id}}">
+        <div class="save-cancel-btn hidden">
+          <input id="updateInput" value="{{userReview}}">
+          <button class="save-button btn waves-effect waves-light" id="save-btn" data-id="{{_id}}">Save</button>
+          <button class="cancel-button btn waves-effect waves-light" id="cancel-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+    
+  </script>
 </body>

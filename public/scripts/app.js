@@ -5,6 +5,8 @@ var allReviews = [];
 $(document).ready(function() {
 	console.log('app.js loaded!');
 
+	$('.modal-trigger').leanModal();
+  
 	//render all reviews
 	$.ajax({
 		method: 'GET',
@@ -13,55 +15,123 @@ $(document).ready(function() {
 		error: onError
 	})
 
-	//update review
-	$('#one-review').on('click', '.save-button', function(event){
-		event.preventDefault();
-		console.log($(this));
+	// create review
+
+	$('#form-modal').on('submit', function (e) {
+		e.preventDefault();
+		var $modal = $('#modal1');
+		var $usernameField = $('#username');
+		var $userReviewField = $('#user-review');
+
+		$.ajax({
+			method: 'POST',
+			url: '/api/reviews',
+			data: {
+			    username: $usernameField.val(),
+			    userReview: $userReviewField.val()
+			  },
+			// data: $(this).serialize(),
+			success: onCreateSuccess,
+			error: onError
+		})
+
+	})
+
+//event handlers:
+$('#review-list').on('click', '#update-btn', function(){
+	$('.update-delete-btn').toggleClass('hidden');
+	$('.save-cancel-btn').toggleClass('hidden');
+});
+
+$('#review-list').on('click', '#cancel-btn', function(){
+	$('.update-delete-btn').toggleClass('hidden');
+	$('.save-cancel-btn').toggleClass('hidden');
+});
+
+//update review
+	$('#review-list').on('click', '#save-btn', function(event){
 		var reviewId = $(this).closest('.save-button').attr('data-id');
-		console.log(reviewId);
-		var reviewToUpdate = allReviews.find(function(review){
-			return review._id == reviewId;
-		});
-		var updatedReview = $(this).serialize();
-		console.log('update review', reviewId);
+		var updatedReview = $('[data-id=' + reviewId + ']');
+
+		var data = {
+			userReview: updatedReview.find('#updateInput').val()
+		};
+
+		console.log('Puting data for review', reviewId, data);
+	// var updatedReview = $(this).parent().find('#updateInput').val();
+	// var reviewId = $(this).closest('.save-button').attr('data-id');
+	// console.log('reviewId', reviewId);
+	// var data = {userReview: updatedReview};
 
 	$.ajax({
 		method: 'PUT',
 		url: '/api/reviews/' + reviewId,
-		data: updatedReview,
-		success: function onUpdateSuccess(json) {
-			reviewId = updatedReview._id;
-			$('[data-id=' + reviewId + ']').remove(allReviews);
-			renderReviews(updatedReview);
-			console.log(updatedReview);
-		},
+		data: data,
+		success: onUpdateSuccess,
 		error: onError
 	});
-	})
-})
+});
+});
+
+
+
+	//delete review
+
+  	$('#review-list').on('click', '#delete-btn', function(e) {
+	    // console.log('clicked delete button to', '/api/reviews/'+$(this).attr('data-id'));
+
+	    console.log(e);
+	    var reviewId = $(this).closest('.delete-button').attr('data-id');
+	    console.log('reviewId', reviewId);
+	    $.ajax({
+	      method: 'DELETE',
+	      url: '/api/reviews/'+ reviewId,
+	      success: onDeleteSuccess,	
+	      error: onError
+	      
+	    });
+	});
 
 function onSuccess(json) {
-	console.log(json);
-	allReviews = json;
-	renderReviews(allReviews);
+	// console.log(json);
+	json.forEach(function(review) {
+		//console.log(review);
+ 		renderReview(review);
+  	}); 
 }
 
-function renderReviews(reviews) {
-	var reviewSource = $('#review-template').html();
-	var reviewTemplate = Handlebars.compile(reviewSource);
-	var reviewHtml = reviewTemplate({reviews: allReviews});
-	$('#one-review').append(reviewHtml);
-	console.log(reviewHtml); 
+function onCreateSuccess(json) {
+	console.log('created', json);
+	// allReviews.push(json);
+	renderReview(json);
 }
 
-// function onUpdateSuccess(updatedReview) {
-// 	var reviewId = updatedReview._id;
-// 	$('[data-id=' + reviewId + ']').remove();
-// 	renderReviews(updatedReview);
-// 	console.log(updatedReview);
-// }
+function onUpdateSuccess(updatedReview){
+	console.log('response to update', updatedReview);
+	var updatedReviewId = updatedReview._id;
+	$('[data-id=' + updatedReviewId + ']').remove();
+	renderReview(updatedReview);
+}
 
+
+// callback after DELETE /api/reviews/:id
+function onDeleteSuccess(json) {
+  console.log('deleted json', json);
+  var deletedReviewId = json._id;
+  console.log('removing the following review from the page:', deletedReviewId);
+  $('div[data-id=' + deletedReviewId + ']').remove();
+}
 
 function onError(error) {
-	console.log('error is'+ error);
+	console.log('error is', error);
+}
+
+function renderReview(review) {
+	// console.log('review:', review);
+	var reviewSource = $('#review-template').html();
+	// console.log(reviewSource);
+	var reviewTemplate = Handlebars.compile(reviewSource);
+	var reviewHtml = reviewTemplate(review);
+	$('#review-list').append(reviewHtml);
+	// console.log(reviewHtml); 
 }
