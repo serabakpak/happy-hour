@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>CHANGE ME</title>
-	<!-- STYLESHEETS -->
+  
+  <title>CHANGE ME</title>
+  <!-- STYLESHEETS -->
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
   <link rel="stylesheet" href="/styles/main.css">
@@ -96,17 +96,21 @@
     <div class="col m4" id="one-review" data-id="{{_id}}">
       <blockquote>{{userReview}}</blockquote>
       <p>{{username}}</p>
-      <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}">
-        <span><button class="updateBtn btn waves-effect waves-light" id="updateBtn">Update</button></span>
-      </a>
-      <a href="javascript:void(0)" class="delete-review">
-        <button class="delete-button btn waves-effect waves-light" id="delete-btn" data-id="{{_id}}">Delete</button>
-      </a>
+      <div class="update-delete-btn">
+        <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}">
+          <button class="update-button btn waves-effect waves-light" id="update-btn">Update</button>
+        </a>
+        <a href="javascript:void(0)" class="delete-review">
+          <button class="delete-button btn waves-effect waves-light" id="delete-btn" data-id="{{_id}}">Delete</button>
+        </a>
+      </div>
       <!-- form to update review -->
       <div class="collapse" id="update-{{_id}}">
-        <input id="updateInput" value="{{userReview}}">
-        <button class="btn waves-effect waves-light" id="save-btn" data-id="{{_id}}">Save</button>
-        <button class="btn waves-effect waves-light" id="cancel-btn">Cancel</button>
+        <div class="save-cancel-btn hidden">
+          <input id="updateInput" value="{{userReview}}">
+          <button class="save-button btn waves-effect waves-light" id="save-btn" data-id="{{_id}}">Save</button>
+          <button class="cancel-button btn waves-effect waves-light" id="cancel-btn">Cancel</button>
+        </div>
       </div>
     </div>
     

@@ -8,7 +8,6 @@ $(document).ready(function() {
 	$('.modal-trigger').leanModal();
   
 	//render all reviews
-
 	$.ajax({
 		method: 'GET',
 		url: '/api/reviews',
@@ -38,30 +37,39 @@ $(document).ready(function() {
 
 	})
 
+//event handlers:
+$('#review-list').on('click', '#update-btn', function(){
+	$('.update-delete-btn').toggleClass('hidden');
+	$('.save-cancel-btn').toggleClass('hidden');
+});
 
-	//update review
+$('#review-list').on('click', '#cancel-btn', function(){
+	$('.update-delete-btn').toggleClass('hidden');
+	$('.save-cancel-btn').toggleClass('hidden');
+});
 
-	// $('#review-list').on('click', '#updateBtn', function(){
-	// 	$(this).parent().find('.collapse').removeClass('collapse');
-	// 	console.log('update btn clicked');
-	// // $('updateBtn').on('click', function(){
-	// // 	console.log('update btn clicked');
-	// // 	$('.collapse').slideToggle('slow');
-	// // });
-	// // $('#review-list').on('click', '#updateBtn', function(event){
-	// // 	event.preventDefault();
-	// // 	$('.collapse').toggle('visibility', 'visible');
-	// 	//find closest id:
-	// 	//var reviewId = $('#review-list').closest('.collapse').attr('data-id');
-	// });
-	// var updateReview = $(this).serialize();
-	// $.ajax({
-	// 	method: 'PUT',
-	// 	url: '/api/reviews/:id',
-	// 	data: updatedReview,
-	// 	success: onUpdateSuccess,
-	// 	error: onError
-	// });
+//update review
+	$('#review-list').on('click', '#save-btn', function(event){
+		var reviewId = $(this).closest('.save-button').attr('data-id');
+		var updatedReview = $('[data-id=' + reviewId + ']');
+
+		var data = {
+			userReview: updatedReview.find('#updateInput').val()
+		};
+
+		console.log('Puting data for review', reviewId, data);
+
+	$.ajax({
+		method: 'PUT',
+		url: '/api/reviews/' + reviewId,
+		data: data,
+		success: onUpdateSuccess,
+		error: onError
+	});
+});
+});
+
+
 
 	//delete review
 
@@ -80,26 +88,6 @@ $(document).ready(function() {
 	    });
 	});
 
-  // delete album when its delete button is clicked
-  // $('#albums').on('click', '.delete-album', handleDeleteAlbumClick);
-
-});
-
-// // when a delete button for an album is clicked
-// function handleDeleteAlbumClick(e) {
-//   var albumId = $(this).parents('.album').data('album-id');
-//   console.log('someone wants to delete album id=' + albumId );
-//   $.ajax({
-//     url: '/api/albums/' + albumId,
-//     method: 'DELETE',
-//     success: handleDeleteAlbumSuccess
-//   });
-// }
-
-
-
-
-
 function onSuccess(json) {
 	// console.log(json);
 	json.forEach(function(review) {
@@ -114,12 +102,13 @@ function onCreateSuccess(json) {
 	renderReview(json);
 }
 
-function onUpdateSuccess(updatedReview) {
-	// var reviewId = updatedReview._id;
-	// $('[data-id=' + reviewId + ']').remove();
-	// renderReview(updatedReview);
-	console.log(updatedReview);
+function onUpdateSuccess(updatedReview){
+	console.log('response to update', updatedReview);
+	var updatedReviewId = updatedReview._id;
+	$('[data-id=' + updatedReviewId + ']').remove();
+	renderReview(updatedReview);
 }
+
 
 // callback after DELETE /api/reviews/:id
 function onDeleteSuccess(json) {
@@ -127,13 +116,10 @@ function onDeleteSuccess(json) {
   var deletedReviewId = json._id;
   console.log('removing the following review from the page:', deletedReviewId);
   $('div[data-id=' + deletedReviewId + ']').remove();
-
-
-
 }
 
 function onError(error) {
-	console.log('error is'+ error);
+	console.log('error is', error);
 }
 
 function renderReview(review) {
