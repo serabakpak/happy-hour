@@ -57,7 +57,7 @@ $('#review-list').on('click', '#cancel-btn', function(){
 			userReview: updatedReview.find('#updateInput').val()
 		};
 
-		console.log('Puting data for review', reviewId, data);
+		console.log('Putting data for review', reviewId, data);
 
 	$.ajax({
 		method: 'PUT',
@@ -67,7 +67,7 @@ $('#review-list').on('click', '#cancel-btn', function(){
 		error: onError
 	});
 });
-});
+
 
 
 
@@ -87,6 +87,7 @@ $('#review-list').on('click', '#cancel-btn', function(){
 	      
 	    });
 	});
+});
 
 function onSuccess(json) {
 	// console.log(json);
