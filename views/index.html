@@ -6,7 +6,9 @@
 	
 	<title>Happy Hour App</title>
 	<!-- STYLESHEETS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
+    <link rel="stylesheet" href="../public/styles/styles.css">
 
 
     <!-- VENDOR SCRIPTS -->
@@ -14,27 +16,49 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
+    <!-- <script src="/scripts/app.js"></script> -->
 </head>
 
 
 <body>
 	<header>
-	    <nav>
-	       <div class="row">
-	          <img src="CHANGE ME" alt="CHANGE ME" class="logo">
-	            <ul class="main-nav">
-	              <li><a href="#">Home</a></li>
-	              <li><a href="#">View Happy Hours</a></li>
-	              <li><a href="#">About Us</a></li>
-	             
-	           </ul>
+	   <div class="nav-bar main-nav">
+	      <div class="row">  
+         	<ul class="main-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">View Happy Hours</a></li>
+            <li><a href="#">About Us</a></li>  
+         </ul>
 	      </div>
-	   </nav>
-	   <div class="hero-text-box">
-	       <h1>Happy Hour<br>Find one near you.</h1>
 	   </div>
-
+	   <div class="hero-text-box">
+	   		<h1>Happy Hour<br>Find one near you</h1>
+	   </div>
 	</header>
+	<section class="container" id="viewhappyhours-section">
+		<div class="row">
+			<h2>Happy Hours Near Me</h2>	
+		</div>	
+		<div class="row">
+			<div class="col s4 card-panel hoverable">
+				<img src="https://media-cdn.tripadvisor.com/media/photo-s/01/1a/19/87/open-kitchen-at-bar-crudo.jpg" alt="Bar Crudo">
+        <h3>Bar Crudo</h3>
+        <p>Neighborhood</p>
+        <p>$$$</p>
+			</div>
+			<div class="col s4 card-panel hoverable">
+				<img src="https://media-cdn.tripadvisor.com/media/photo-s/01/1a/19/87/open-kitchen-at-bar-crudo.jpg" alt="Bar Crudo">
+        <h3>Bar Crudo</h3>
+        <p>Neighborhood</p>
+        <p>$$$</p>
+			</div>
+			<div class="col s4 card-panel hoverable">
+				<img src="https://media-cdn.tripadvisor.com/media/photo-s/01/1a/19/87/open-kitchen-at-bar-crudo.jpg" alt="Bar Crudo">
+        <h3>Bar Crudo</h3>
+        <p>Neighborhood</p>
+        <p>$$$</p>
+			</div>
+
+	</section>
 </body>
 </html>

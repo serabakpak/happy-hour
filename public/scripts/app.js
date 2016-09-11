@@ -30,7 +30,6 @@ $(document).ready(function() {
 			    username: $usernameField.val(),
 			    userReview: $userReviewField.val()
 			  },
-			// data: $(this).serialize(),
 			success: onCreateSuccess,
 			error: onError
 		})
@@ -67,7 +66,6 @@ $('#review-list').on('click', '#cancel-btn', function(){
 		error: onError
 	});
 });
-
 
 
 
