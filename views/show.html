@@ -26,7 +26,7 @@
       <div class="parallax"><img src="images/palm-house.jpg"></div>  
       <h1 id="name-heading">Palm House</h1>
       <div class="row">
-        <div class="main-nav col m4 offset-m8">
+        <div class="main-nav col m5 offset-m7">
           <ul id="listing-navbar">
             <li><a href="#">Home</a></li>
             <li><a href="#">View Happy Hours</a></li>
@@ -71,8 +71,8 @@
       <div class="row">
         <h2 id="reviews-heading">Reviews</h2>
       </div>
-    </div>
-    <div class="row" id="review-list">
+      <div class="row" id="review-list">
+      </div>
     </div>
   </section>
  
@@ -82,7 +82,7 @@
       
       
       <!-- Modal Trigger -->
-        <button class="waves-effect waves-light btn modal-trigger col m2 offset-m5" data-target="modal1" id="add-review-btn">Add Review</button>
+        <button class="waves-effect waves-light btn modal-trigger col m2 offset-m5 review-button" data-target="modal1" id="add-review-btn">Add Review</button>
 
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
@@ -116,18 +116,16 @@
 
   <!-- moved the template down here because we don't want to mistakenly manipulate the DOM where it will affect the template -->
   <script id="review-template" type="text/x-handlebars-template">  
-
-
     <div class="card col m4" id="one-review" data-id="{{_id}}">
       <div class="card-content">
-        <p>{{username}}</p>
+        <p class="chip">{{username}}</p>
         <blockquote>{{userReview}}</blockquote>
         <div class="update-delete-btn">
         <!-- <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}"> -->
-          <button class="update-button btn waves-effect waves-light" data-toggle="collapse" data-target="#update-{{_id}}" id="update-btn"><span class="card-title activator grey-text text-darken-4">Update</span></button>
+          <button class="update-button btn waves-effect waves-light review-button" data-target="#update-{{_id}}" id="update-btn"><span class="activator">Update</span></button>
         <!-- </a> -->
         <!-- <a href="javascript:void(0)" class="delete-review"> -->
-          <button class="delete-button btn waves-effect waves-light class="delete-review id="delete-btn" data-id="{{_id}}">Delete</button>
+          <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{_id}}">Delete</button>
         <!-- </a> -->
       </div>
       </div>
@@ -135,7 +133,7 @@
         <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
         <div class="save-cancel-btn hidden">
           <input id="updateInput" value="{{userReview}}">
-          <button class="save-button btn waves-effect waves-light" id="save-btn" data-id="{{_id}}">Save</button>
+          <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{_id}}">Save</button>
         </div>
       </div>
     </div>

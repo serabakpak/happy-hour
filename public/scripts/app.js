@@ -85,22 +85,6 @@ $(document).ready(function() {
 
 	})
 
-	//event handlers:
-		//update button:
-	// $('#review-list').on('click', '#update-btn', function(){
-	// 	$(this).toggleClass('hidden');
-	// 	$(this).next('button').toggleClass('hidden');
-	// 	$('.save-cancel-btn').toggleClass('hidden');
-	// 	$('#update-input').focus();
-	// });
-	// 	//cancel button:
-	// $('#review-list').on('click', '#cancel-btn', function(){
-	// 	$('.update-delete-btn').toggleClass('hidden');
-	// 	$('.save-cancel-btn').toggleClass('hidden');
-	// });  
-
-
-
 	//update review
 	$('#review-list').on('click', '#save-btn', function(event){
 			var reviewId = $(this).closest('.save-button').attr('data-id');
