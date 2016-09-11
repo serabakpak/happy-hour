@@ -11,11 +11,16 @@ body {
 	color: white;
 	position: absolute;
 	margin-top: 15%;
+	text-align: center;
 }
 
 #listing-navbar li {
 	display: inline;
 	padding: 1em;
+}
+
+#listing-navbar li a {
+	color: white;
 	font-size: 1.25em;
 }
 
@@ -65,9 +70,15 @@ body {
 	font-size: 4em;
 }
 
-/*.hidden {
-	visibility: hidden;
-}*/
+.review-button {
+	text-align: center;
+	background-color: #78909c;
+}
+
+.review-button:hover {
+	background-color: #455a64;
+}
+
 
 .update-btn-div {
 	display: inline;
@@ -77,6 +88,10 @@ body {
 	display: inline;
 }
 
+#updateInput {
+	background-color: #cfd8dc;
+	color: #37474f;
+}
 /**********MODAL************/
 #modal-section {
 	background-color: white;
