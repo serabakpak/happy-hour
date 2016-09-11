@@ -20,27 +20,15 @@ var controllers = require('./controllers');
  * ROUTES *
  **********/
 
-// var sampleReviews = [{
-//   username: 'SeraController',
-//   userReview: 'Awesome place!'
-//   },
-//   {
-//   username: 'Abby',
-//   userReview: 'Cool drinks!'
-//   },
-//   {
-//   username: 'Lily',
-//   userReview: 'Best Happy Hour EVER!'
-//   }
-// ];
-
-
 /*
  * HTML Endpoints
  */
 
-//will need to change to index.html if get initial homepage up:
 app.get('/', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
+
+app.get('/happyHours/:happyHourId', function showListing (req, res) {
   res.sendFile(__dirname + '/views/show.html');
 });
 
@@ -50,12 +38,13 @@ app.get('/', function homepage (req, res) {
 
 app.get('/api', controllers.api.index);
 
+app.get('/api/happyHours', controllers.happyHours.index);
+app.get('/api/happyHours/:happyHourId', controllers.happyHours.show);
+
+
 app.get('/api/reviews', controllers.reviews.index);
-
 app.post('/api/reviews', controllers.reviews.create);
-
 app.put('/api/reviews/:reviewId', controllers.reviews.update);
-
 app.delete('/api/reviews/:reviewId', controllers.reviews.destroy);
 
 /**********

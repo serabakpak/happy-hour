@@ -1,57 +1,34 @@
-/* CLIENT-SIDE JS*/
-
-// var happyHoursSample = [{
-//   name: 'Bar Crudo',
-//   image: String,
-//   location: 'NoPa',
-//   price: 3,
-//   review: [],
-//   daysOfWeek: 'Everyday',
-//   hours: '5PM-6:30PM',
-//   alcoholType: '$4 beer, $6 wine',
-//   address: '655 Divisadero Street',
-//   website: "http://barcrudo.com/"
-//   },
-//   {
-//   name: 'Palm House',
-//   image: String,
-//   location: 'Marina/Cow Hollow',
-//   price: 2,
-//   review: [],
-//   daysOfWeek: 'Tuesday-Friday',
-//   hours: '5PM-6:30PM',
-//   alcoholType: '$7 cocktails, $1 off beers, 1/2 off wine',
-//   address:'2032 Union Street',
-//   website: 'http://www.palmhousesf.com/palm-house-san-francisco-menus.html'
-//   },
-//   {
-//   name: 'Reed & Greenough',
-//   image: String,
-//   location: 'Marina',
-//   price: 2,
-//   review: [],
-//   daysOfWeek: 'Tuesday-Friday, Sunday',
-//   hours: '5PM-7PM',
-//   alcoholType: '1/2 off wine',
-//   address: '3251 Scott Street',
-//   website: "http://reedandgreenough.com/"
-//   }]
-
 
 $(document).ready(function() {
 	console.log('app.js loaded!');
 	//parallax effect:
-    $('.parallax').parallax();
+  // $('.parallax').parallax();
 
+
+
+  // render multiple listings for homepage
+  $.ajax({
+  method: 'GET',
+  url: '/api/happyHours',
+  success: renderMultipleListings,
+  error: renderMultipleError
+  }); 
+
+  //render 1 listing for show.html:
+  // Get the ID from the URL 
+  //i.e. get '/happyHours/0'
+  var pathname = window.location.pathname;
+
+  //replace '/happyHours/' with empty string so '/happyHours/0' --> '0'
+  var id = pathname.replace("/happyHours/",""); 
+
+  $.ajax({
+    method: 'GET',
+    url: '/api/happyHours/' + id,
+    success: onHappyHourSuccess,
+    error: onHappyHourError
+  }); 
    
-  
-	//render one listing
-	// $.ajax({
-	// 	method: 'GET',
-	// 	url: '/api/happyHours/:happyHourId',
-	// 	success: onHappyHourSuccess,
-	// 	error: onError
-	// })
 
 	$('.modal-trigger').leanModal();
   
@@ -123,6 +100,52 @@ $(document).ready(function() {
 	    });
 	});
 });
+
+function onHappyHourSuccess(json){
+  renderOneListing(json);
+}
+
+function onHappyHourError(error) {
+  console.log('on happy hour error is', error);
+}
+
+function renderMultipleError(error) {
+  console.log('render multiple error is', error);
+}
+
+function renderOneListing(listing) {
+   console.log('listing:', listing);
+  var listingSource = $('#listing-template').html();
+  // console.log(reviewSource);
+  var listingTemplate = Handlebars.compile(listingSource);
+  var listingHtml = listingTemplate(listing);
+  $('#listing-section').append(listingHtml);
+  // console.log(reviewHtml); 
+}
+
+function renderListing(happyHour) {
+   console.log('happyHour:', happyHour);
+  var happyHourSource = $('#happy-hour-template').html();
+  console.log(happyHourSource);
+  var happyHourTemplate = Handlebars.compile(happyHourSource);
+  var happyHourHtml = happyHourTemplate(happyHour);
+  $('#happy-hour-section').append(happyHourHtml);
+  // console.log(reviewHtml); 
+}
+
+function renderMultipleListings(listings) {
+  console.log(listings);
+  listings.forEach(function(listing) {
+    renderListing(listing);
+  });
+}
+
+
+
+
+
+
+
 
 function onSuccess(json) {
 	// console.log(json);

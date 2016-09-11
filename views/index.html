@@ -8,7 +8,7 @@
 	<!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
-    <link rel="stylesheet" href="../public/styles/styles.css">
+    <link rel="stylesheet" href="/styles/styles.css">
 
 
     <!-- VENDOR SCRIPTS -->
@@ -16,7 +16,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
-    <!-- <script src="/scripts/app.js"></script> -->
+    <script src="/scripts/app.js"></script>
 </head>
 
 
@@ -28,7 +28,7 @@
             <li><a href="#">Home</a></li>
             <li><a href="#">View Happy Hours</a></li>
             <li><a href="#">About Us</a></li>  
-         </ul>
+         	</ul>
 	      </div>
 	   </div>
 	   <div class="hero-text-box">
@@ -39,26 +39,18 @@
 		<div class="row">
 			<h2>Happy Hours Near Me</h2>	
 		</div>	
-		<div class="row">
-			<div class="col s4 card-panel hoverable">
-				<img src="https://media-cdn.tripadvisor.com/media/photo-s/01/1a/19/87/open-kitchen-at-bar-crudo.jpg" alt="Bar Crudo">
-        <h3>Bar Crudo</h3>
-        <p>Neighborhood</p>
-        <p>$$$</p>
-			</div>
-			<div class="col s4 card-panel hoverable">
-				<img src="https://media-cdn.tripadvisor.com/media/photo-s/01/1a/19/87/open-kitchen-at-bar-crudo.jpg" alt="Bar Crudo">
-        <h3>Bar Crudo</h3>
-        <p>Neighborhood</p>
-        <p>$$$</p>
-			</div>
-			<div class="col s4 card-panel hoverable">
-				<img src="https://media-cdn.tripadvisor.com/media/photo-s/01/1a/19/87/open-kitchen-at-bar-crudo.jpg" alt="Bar Crudo">
-        <h3>Bar Crudo</h3>
-        <p>Neighborhood</p>
-        <p>$$$</p>
-			</div>
-
+		<div class="row" id="happy-hour-section">
+			<script id="happy-hour-template" type="text/x-handlebars-template">
+				<a href="/happyHours/{{_id}}">
+					<div class="col s4 card-panel hoverable">
+						<img src="{{image}}" alt="{{name}}">
+						<h3>{{name}}</h3>
+						<p>{{location}}</p>
+						<p>{{price}}</p>
+					</div>
+				</a>
+			</script>
+		</div>
 	</section>
 </body>
 </html>
