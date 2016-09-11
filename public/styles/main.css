@@ -1,6 +1,6 @@
 /**********LISTINGS PAGE************/
 body {
-	background-color: #eceff1;
+	background-color: #78909c;
 }
 
 #palm-house-img {
@@ -8,7 +8,9 @@ body {
 }
 
 #name-heading {
+	color: white;
 	position: absolute;
+	margin-top: 15%;
 }
 
 #listing-navbar li {
@@ -21,12 +23,47 @@ body {
 	font-size: 1.5em;
 }
 
-#listing-desc {
+/**********INFO section************/
+.header {
 	text-align: center;
+	color: #37474f;
+}
+
+#happy-hour-info {
+	text-align: center;
+	font-size: 1.5em;
+	color: #37474f;
+}
+
+.general-info {
+	text-align: center;
+	border-left: 1px solid black;
+	vertical-align: text-bottom;
+	color: #37474f;
+}
+
+#listing-location {
+	border-left: none;
+}
+
+#listing-price span {
+	display: none;
+}
+
+#listing-website a {
+	text-decoration: none;
+}
+
+#dollar {
+	width: 1.5em;
 }
 
 /**********REVIEW PAGE************/
-
+#reviews-heading {
+	text-align: center;
+	color: white;
+	font-size: 4em;
+}
 
 .hidden {
 	visibility: hidden;
@@ -38,4 +75,9 @@ body {
 
 .delete-btn-div {
 	display: inline;
+}
+
+/**********MODAL************/
+#modal-section {
+	background-color: white;
 }

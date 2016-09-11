@@ -8,10 +8,10 @@
   <!-- STYLESHEETS -->
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-  <!-- <link rel="stylesheet" href="../public/styles/main.css"> -->
   <link rel="stylesheet" href="/styles/main.css">
 
   <!-- VENDOR SCRIPTS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
@@ -21,64 +21,68 @@
 </head>
 
 <body>
-  <section class="container" id="listing-section">    
-    <div class="row">
-      <div class="main-nav col m6 offset-m6 container">
-      <ul id="listing-navbar">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">View Happy Hours</a></li>
-        <li><a href="#">About Us</a></li>  
-      </ul>
+  <section id="listing-section">  
+    <div class="parallax-container">
+      <div class="parallax"><img src="images/palm-house.jpg"></div>  
+      <h1 id="name-heading">Palm House</h1>
+      <div class="row">
+        <div class="main-nav col m4 offset-m8">
+          <ul id="listing-navbar">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">View Happy Hours</a></li>
+            <li><a href="#">About Us</a></li>  
+          </ul>
+        </div>
       </div>
     </div>
-
-    <div id="listing-section">
-        <div id="listing-image">
-          <div class="row">
-            <div class="class="col m9 container">
-              <!-- <img id="palm-house-img" src="../public/images/palm-house.jpg" alt="Palm House"> -->
-              <h1 id="name-heading">Palm House</h1>
-            </div>
-            <div class="class="col m6 container" id="listing">
-              <ul class="listing-data" id="listing-desc">
-                <li>2032 Union Street</li>
-                <a href="http://www.palmhousesf.com/palm-house-san-francisco-menus.html"><li>Palm House Website</li></a>
-                <li>$$</li>
-                <br>
-                <li>Tuesday-Friday</li>
-                <li>5PM-6:30PM</li>
-                <br>
-                <li><ul>Drink Specials:
-                      <li>$7 cocktails</li>
-                      <li>$1 off beers</li>
-                      <li>1/2 off wine</li>
-                    </ul>
-                </li>
+    <div class="section white">
+      <div class="row">
+        <div class="col m6 offset-m3">
+          <h2 class="header">Happy Hour Specials</h2>
+          <ul class="col m6 offset-m3" id="happy-hour-info">
+            <li>Tuesday-Friday</li>
+            <li>5PM-6:30PM</li>
+            <br>
+            <li>
+              <ul>Drink Specials:
+                <li>$7 cocktails</li>
+                <li>$1 off beers</li>
+                <li>1/2 off wine</li>
               </ul>
-            </div>
-          </div>
+            </li>
+          <br>
         </div>
+        <div class="col m2 offset-m3 general-info" id="listing-location">
+            <p><i class="small material-icons">location_on</i>2032 Union Street</p>
+        </div>
+        <div class="col m2 general-info" id="listing-price">
+            <p><img id="dollar" src="images/dollar-sign.ico"><span>hidden</span></p>
+        </div>
+        <div class="col m2 general-info" id="listing-website">
+            <a href="http://www.palmhousesf.com/palm-house-san-francisco-menus.html"><p><i class="small material-icons">info_outline</i>Palm House Website</p></a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="container" id="reviews-section">
-    <div class="row">
-      <h2>Reviews</h2>
+  <section id="reviews-section">
+    <div class="parallax-container">
+      <div class="parallax"></div>
+      <div class="row">
+        <h2 id="reviews-heading">Reviews</h2>
+      </div>
     </div>
-    
-    
-
-
-
+    <div class="row" id="review-list">
     </div>
   </section>
  
-  <section class="container" id="modal-section">
-    <div class="row">
+  <section id="modal-section">
+    <div class="section white">
+      <div class="row">
       
       
       <!-- Modal Trigger -->
-        <button class="waves-effect waves-light btn modal-trigger" data-target="modal1" id="add-review-btn">Add Review</button>
+        <button class="waves-effect waves-light btn modal-trigger col m2 offset-m5" data-target="modal1" id="add-review-btn">Add Review</button>
 
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
@@ -107,35 +111,33 @@
           </div>
         </div>
 
-
+    </div>
   </section>
 
   <!-- moved the template down here because we don't want to mistakenly manipulate the DOM where it will affect the template -->
   <script id="review-template" type="text/x-handlebars-template">  
 
 
-    <div class="col m4" id="one-review" data-id="{{_id}}">
-      <blockquote>{{userReview}}</blockquote>
-      <p>{{username}}</p>
-      <div class="update-btn-div">
+    <div class="card col m4" id="one-review" data-id="{{_id}}">
+      <div class="card-content">
+        <blockquote>{{userReview}}</blockquote>
+        <p>{{username}}</p>
+        <div class="update-delete-btn">
         <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}">
-          <button class="update-button btn waves-effect waves-light" id="update-btn">Update</button>
+          <button class="update-button btn waves-effect waves-light" id="update-btn"><span class="card-title activator grey-text text-darken-4">Update</span></button>
         </a>
-      </div>
-      <div class="delete-btn-div">
         <a href="javascript:void(0)" class="delete-review">
           <button class="delete-button btn waves-effect waves-light" id="delete-btn" data-id="{{_id}}">Delete</button>
         </a>
       </div>
-      <!-- form to update review -->
-      <div class="collapse" id="update-{{_id}}">
+      </div>
+      <div class="card-reveal collapse" id="update-{{_id}}">
+        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
         <div class="save-cancel-btn hidden">
-          <input id="update-input" value="{{userReview}}">          
+          <input id="updateInput" value="{{userReview}}">
           <button class="save-button btn waves-effect waves-light" id="save-btn" data-id="{{_id}}">Save</button>
-          <button class="cancel-button btn waves-effect waves-light" id="cancel-btn">Cancel</button>
         </div>
       </div>
     </div>
-    
   </script>
 </body>
