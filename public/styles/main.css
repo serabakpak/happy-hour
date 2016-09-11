@@ -1,7 +1,41 @@
+/**********LISTINGS PAGE************/
+body {
+	background-color: #eceff1;
+}
+
+#palm-house-img {
+	width: 100%;
+}
+
+#name-heading {
+	position: absolute;
+}
+
+#listing-navbar li {
+	display: inline;
+	padding: 1em;
+	font-size: 1.25em;
+}
+
+#listing {
+	font-size: 1.5em;
+}
+
+#listing-desc {
+	text-align: center;
+}
+
+/**********REVIEW PAGE************/
+
+
 .hidden {
 	visibility: hidden;
 }
 
-/*.save-cancel-btn {
-	visibility: hidden;
-}*/
+.update-btn-div {
+	display: inline;
+}
+
+.delete-btn-div {
+	display: inline;
+}
