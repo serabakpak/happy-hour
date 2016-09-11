@@ -1,0 +1,52 @@
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/happyhour.jpeg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /*100% of viewport*/ 
+    background-attachment: fixed;
+}
+
+
+
+.main-nav {
+    float: right;
+    list-style: none;
+    margin-top: 25px;
+
+}
+
+.main-nav li {
+    display: inline-block;
+    margin-right: 40px;
+
+    
+}
+
+.main-nav a {
+	color: white;
+	font-size: 20px;
+}
+
+h1 {
+	/*color: white;*/
+	font-size: 7em;
+	font-family: 'Architects Daughter', cursive;
+}
+
+.hero-text-box {
+    position: absolute;
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+h2 {
+	text-align: center;
+
+}
+
+img {
+	width: 100%;
+}
