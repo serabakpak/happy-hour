@@ -118,8 +118,8 @@
   <script id="review-template" type="text/x-handlebars-template">  
     <div class="card col m4" id="one-review" data-id="{{_id}}">
       <div class="card-content">
-        <p class="chip">{{username}}</p>
-        <blockquote>{{userReview}}</blockquote>
+        <p class="chip" id="username-chip">{{username}}</p>
+        <blockquote id="review-blockquote"><span></span>{{userReview}}</blockquote>
         <div class="update-delete-btn">
         <!-- <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}"> -->
           <button class="update-button btn waves-effect waves-light review-button" data-target="#update-{{_id}}" id="update-btn"><span class="activator">Update</span></button>
