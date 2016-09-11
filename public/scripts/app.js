@@ -87,17 +87,17 @@ $(document).ready(function() {
 
 	//event handlers:
 		//update button:
-	$('#review-list').on('click', '#update-btn', function(){
-		$(this).toggleClass('hidden');
-		$(this).next('button').toggleClass('hidden');
-		$('.save-cancel-btn').toggleClass('hidden');
-		$('#update-input').focus();
-	});
-		//cancel button:
-	$('#review-list').on('click', '#cancel-btn', function(){
-		$('.update-delete-btn').toggleClass('hidden');
-		$('.save-cancel-btn').toggleClass('hidden');
-	});  
+	// $('#review-list').on('click', '#update-btn', function(){
+	// 	$(this).toggleClass('hidden');
+	// 	$(this).next('button').toggleClass('hidden');
+	// 	$('.save-cancel-btn').toggleClass('hidden');
+	// 	$('#update-input').focus();
+	// });
+	// 	//cancel button:
+	// $('#review-list').on('click', '#cancel-btn', function(){
+	// 	$('.update-delete-btn').toggleClass('hidden');
+	// 	$('.save-cancel-btn').toggleClass('hidden');
+	// });  
 
 
 
@@ -141,14 +141,6 @@ $(document).ready(function() {
 	    });
 	});
 });
-
-// function onHappyHourSuccess(json) {
-// 	// console.log(json);
-// 	json.(function(listing){
-// 		//console.log(review);
-//  		renderReview(listing);
-//   	}); 
-// }
 
 function onSuccess(json) {
 	// console.log(json);
