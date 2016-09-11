@@ -120,19 +120,19 @@
 
     <div class="card col m4" id="one-review" data-id="{{_id}}">
       <div class="card-content">
-        <blockquote>{{userReview}}</blockquote>
         <p>{{username}}</p>
+        <blockquote>{{userReview}}</blockquote>
         <div class="update-delete-btn">
-        <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}">
-          <button class="update-button btn waves-effect waves-light" id="update-btn"><span class="card-title activator grey-text text-darken-4">Update</span></button>
-        </a>
-        <a href="javascript:void(0)" class="delete-review">
-          <button class="delete-button btn waves-effect waves-light" id="delete-btn" data-id="{{_id}}">Delete</button>
-        </a>
+        <!-- <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}"> -->
+          <button class="update-button btn waves-effect waves-light" data-toggle="collapse" data-target="#update-{{_id}}" id="update-btn"><span class="card-title activator grey-text text-darken-4">Update</span></button>
+        <!-- </a> -->
+        <!-- <a href="javascript:void(0)" class="delete-review"> -->
+          <button class="delete-button btn waves-effect waves-light class="delete-review id="delete-btn" data-id="{{_id}}">Delete</button>
+        <!-- </a> -->
       </div>
       </div>
       <div class="card-reveal collapse" id="update-{{_id}}">
-        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+        <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
         <div class="save-cancel-btn hidden">
           <input id="updateInput" value="{{userReview}}">
           <button class="save-button btn waves-effect waves-light" id="save-btn" data-id="{{_id}}">Save</button>
