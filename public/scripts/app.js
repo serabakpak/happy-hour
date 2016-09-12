@@ -9,8 +9,6 @@ $(document).ready(function() {
   success: renderMultipleListings,
   error: renderMultipleError
   }); 
-<<<<<<< HEAD
-=======
 
   //render 1 listing for show.html:
   // Get the ID from the URL 
@@ -97,7 +95,6 @@ $(document).ready(function() {
 	      
 	    });
 	});
->>>>>>> e831b6d2bc4b925c301326476fb28eef06b99693
 });
 
 function onHappyHourSuccess(json){
@@ -112,9 +109,6 @@ function renderMultipleError(error) {
   console.log('render multiple error is', error);
 }
 
-<<<<<<< HEAD
-
-=======
 function renderOneListing(listing) {
    console.log('review:', listing);
   var listingSource = $('#listing-template').html();
@@ -124,7 +118,6 @@ function renderOneListing(listing) {
   $('#listing-section').append(listingHtml);
   // console.log(reviewHtml); 
 }
->>>>>>> e831b6d2bc4b925c301326476fb28eef06b99693
 
 function renderListing(happyHour) {
    console.log('happyHour:', happyHour);
@@ -143,9 +136,6 @@ function renderMultipleListings(listings) {
   });
 }
 
-<<<<<<< HEAD
-
-=======
 function onSuccess(json) {
 	// console.log(json);
 	json.forEach(function(review) {
@@ -178,7 +168,6 @@ function onDeleteSuccess(json) {
   console.log('removing the following review from the page:', deletedReviewId);
   $('div[data-id=' + deletedReviewId + ']').remove();
 }
->>>>>>> e831b6d2bc4b925c301326476fb28eef06b99693
 
 function onError(error) {
 	console.log('error is', error);
