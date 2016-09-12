@@ -114,7 +114,7 @@ function renderMultipleError(error) {
 }
 
 function renderOneListing(listing) {
-   console.log('listing:', listing);
+   console.log('review:', listing);
   var listingSource = $('#listing-template').html();
   // console.log(reviewSource);
   var listingTemplate = Handlebars.compile(listingSource);
