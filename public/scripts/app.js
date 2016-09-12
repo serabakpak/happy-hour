@@ -58,7 +58,7 @@ $(document).ready(function() {
 			success: onCreateSuccess,
 			error: onError
 		})
-
+		$(this).trigger('reset');
 	})
 
 	//update review
@@ -159,6 +159,7 @@ function onCreateSuccess(json) {
 	console.log('created', json);
 	// allReviews.push(json);
 	renderReview(json);
+
 }
 
 function onUpdateSuccess(updatedReview){
