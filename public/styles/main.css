@@ -4,9 +4,13 @@ body {
 	font-family: 'Raleway', sans-serif;
 }
 
-#palm-house-img {
-	width: 100%;
+#listing-image img{
+	-webkit-filter:brightness(50%);
+	-moz-filter:brightness(50%);
+	filter:url(#brightness);
+	filter:brightness(50%);
 }
+
 
 #name-heading {
 	color: white;

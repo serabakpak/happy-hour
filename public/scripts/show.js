@@ -1,8 +1,7 @@
 
 $(document).ready(function() {
 	console.log('app.js loaded!');
-	//parallax effect:
-  $('.parallax').parallax();
+
 
  //render 1 listing for show.html:
   // Get the ID from the URL 
@@ -26,8 +25,8 @@ $(document).ready(function() {
 	$.ajax({
 		method: 'GET',
 		url: '/api/reviews',
-		success: onSuccess,
-		error: onError
+		success: renderMultipleReviews,
+		error: renderMultipleError
 	})
 
 	// create review
@@ -46,7 +45,7 @@ $(document).ready(function() {
 			    userReview: $userReviewField.val()
 			  },
 			success: onCreateSuccess,
-			error: onError
+			error: createError
 		})
 		$(this).trigger('reset');
 		$modal.closeModal();
@@ -68,7 +67,7 @@ $(document).ready(function() {
 				url: '/api/reviews/' + reviewId,
 				data: data,
 				success: onUpdateSuccess,
-				error: onError
+				error: updateError
 			});
 		});
 
@@ -86,13 +85,22 @@ $(document).ready(function() {
 		      method: 'DELETE',
 		      url: '/api/reviews/'+ reviewId,
 		      success: onDeleteSuccess,	
-		      error: onError
+		      error: deleteError
 		      
 		    });
 		});
+});
+
+function onHappyHourSuccess(json){
+  console.log('onhappyhoursuccess',json)
+  renderOneListing(json);
+  	//parallax effect:
+  $('.parallax').parallax();
 }
 
-
+function onHappyHourError(error) {
+  console.log('on happy hour error is', error);
+}
 
 function renderOneListing(listing) {
    console.log('listing:', listing);
@@ -104,7 +112,7 @@ function renderOneListing(listing) {
   // console.log(reviewHtml); 
 }
 
-function onSuccess(json) {
+function renderMultipleReviews(json) {
 	// console.log(json);
 	json.forEach(function(review) {
 		//console.log(review);
@@ -147,6 +155,19 @@ function renderReview(review) {
 	// console.log(reviewHtml); 
 }
 
-function onError(error) {
-	console.log('error is', error);
+function renderMultipleError(error) {
+	console.log('rendering error is', error);
+}
+
+
+function createError(error) {
+	console.log('creating error is', error);
+}
+
+function deleteError(error) {
+	console.log('delete error is', error);
+}
+
+function updateError(error) {
+	console.log('update error is', error);
 }

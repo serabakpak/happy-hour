@@ -19,14 +19,14 @@
 
 
   <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/show.js"></script>
+  <script src="/scripts/show.js"></script>
 </head>
 
 <body>
   <section id="listing-section">
     <script id="listing-template" type="text/x-handlebars-template" type="text/javascript"> 
       <div class="parallax-container">
-    <div class="parallax"><img src="{{image}}" alt="{{name}}"></div>  
+    <div id="listing-image" class="parallax"><img src="{{showImage}}" alt="{{name}}"></div>  
     <h1 id="name-heading">{{name}}</h1>
         <div class="row">
           <div class="main-nav col m5 offset-m7">
@@ -66,7 +66,12 @@
           </div>
         </div>
       </div>
+      </script>
     </section>
+
+
+
+
 
     <section id="reviews-section" class="container">
       <div class="parallax-container">
@@ -91,29 +96,31 @@
           <div id="modal1" class="modal">
             <div class="modal-content">
               <h4>Add a Review</h4>
-            <div class="row">
-              <form class="col s12" method="POST" action="/api/reviews" id="form-modal">
-                <div class="row modal-form-row">
-                  <div class="input-field col s12">
-                    <input id="username" type="text" class="validate" required>
-                    <label for="username">Your Name</label>
+
+              <div class="row">
+                <form class="col s12" method="POST" action="/api/reviews" id="form-modal">
+                  <div class="row modal-form-row">
+                    <div class="input-field col s12">
+                      <input id="username" type="text" class="validate">
+                      <label for="username">Your Name</label>
+                    </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <textarea id="user-review" type="text" class="materialize-textarea validate" required></textarea>
-                    <label for="user-review">Your Review</label>
-                  </div>
-                  <div class="modal-footer">
-                    <input type="submit" class="modal-action waves-effect waves-green btn-flat" id="submit-btn">
-                  </div>
-                </div>  
-              </form>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="user-review" type="text" class="materialize-textarea validate"></textarea>
+                      <label for="user-review">Your Review</label>
+                    </div>
+                    <div class="modal-footer">
+                      <input type="submit" class="modal-action waves-effect waves-green btn-flat" id="submit-btn">
+                    </div>
+                  </div>  
+                </form>
+              </div>
             </div>
           </div>
 
       </div>
-    </script>
+    
   </section>
 
 
