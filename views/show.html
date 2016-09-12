@@ -17,7 +17,7 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 
   <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
+    <script src="/scripts/show.js"></script>
 </head>
 
 <body>
@@ -28,8 +28,8 @@
       <div class="row">
         <div class="main-nav col m5 offset-m7">
           <ul id="listing-navbar">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">View Happy Hours</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#viewhappyhours-section">View Happy Hours</a></li>
             <li><a href="#">About Us</a></li>  
           </ul>
         </div>
@@ -93,17 +93,17 @@
               <form class="col s12" method="POST" action="/api/reviews" id="form-modal">
                 <div class="row modal-form-row">
                   <div class="input-field col s12">
-                    <input id="username" type="text" class="validate">
+                    <input id="username" type="text" class="validate" required>
                     <label for="username">Your Name</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                    <textarea id="user-review" type="text" class="materialize-textarea validate"></textarea>
+                    <textarea id="user-review" type="text" class="materialize-textarea validate" required></textarea>
                     <label for="user-review">Your Review</label>
                   </div>
                   <div class="modal-footer">
-                    <input type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" id="submit-btn">
+                    <input type="submit" class="modal-action waves-effect waves-green btn-flat" id="submit-btn">
                   </div>
                 </div>  
               </form>
