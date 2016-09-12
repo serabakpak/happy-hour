@@ -86,7 +86,7 @@ $(document).ready(function() {
 	//delete review
 
   	$('#review-list').on('click', '#delete-btn', function(e) {
-	    // console.log('clicked delete button to', '/api/reviews/'+$(this).attr('data-id'));
+	    console.log('clicked delete button to', '/api/reviews/'+$(this).attr('data-id'));
 
 	    console.log(e);
 	    var reviewId = $(this).closest('.delete-button').attr('data-id');
@@ -134,18 +134,11 @@ function renderListing(happyHour) {
 }
 
 function renderMultipleListings(listings) {
-  console.log(listings);
+  // console.log(listings);
   listings.forEach(function(listing) {
     renderListing(listing);
   });
 }
-
-
-
-
-
-
-
 
 function onSuccess(json) {
 	// console.log(json);

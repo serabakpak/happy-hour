@@ -12,110 +12,116 @@
 
   <!-- VENDOR SCRIPTS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
 
   <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
 </head>
 
 <body>
-  <section id="listing-section">  
-    <div class="parallax-container">
-      <div class="parallax"><img src="images/palm-house.jpg"></div>  
-      <h1 id="name-heading">Palm House</h1>
-      <div class="row">
-        <div class="main-nav col m5 offset-m7">
-          <ul id="listing-navbar">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">View Happy Hours</a></li>
-            <li><a href="#">About Us</a></li>  
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="section white">
-      <div class="row">
-        <div class="col m6 offset-m3">
-          <h2 class="header">Happy Hour Specials</h2>
-          <ul class="col m6 offset-m3" id="happy-hour-info">
-            <li>Tuesday-Friday</li>
-            <li>5PM-6:30PM</li>
-            <br>
-            <li>
-              <ul>Drink Specials:
-                <li>$7 cocktails</li>
-                <li>$1 off beers</li>
-                <li>1/2 off wine</li>
-              </ul>
-            </li>
-          <br>
-        </div>
-        <div class="col m2 offset-m3 general-info" id="listing-location">
-            <p><i class="small material-icons">location_on</i>2032 Union Street</p>
-        </div>
-        <div class="col m2 general-info" id="listing-price">
-            <p><img id="dollar" src="images/dollar-sign.ico"><span>hidden</span></p>
-        </div>
-        <div class="col m2 general-info" id="listing-website">
-            <a href="http://www.palmhousesf.com/palm-house-san-francisco-menus.html"><p><i class="small material-icons">info_outline</i>Palm House Website</p></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="reviews-section">
-    <div class="parallax-container">
-      <div class="parallax"></div>
-      <div class="row">
-        <h2 id="reviews-heading">Reviews</h2>
-      </div>
-      <div class="row" id="review-list">
-      </div>
-    </div>
-  </section>
- 
-  <section id="modal-section">
-    <div class="section white">
-      <div class="row">
-      
-      
-      <!-- Modal Trigger -->
-        <button class="waves-effect waves-light btn modal-trigger col m2 offset-m5 review-button" data-target="modal1" id="add-review-btn">Add Review</button>
-
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-          <div class="modal-content">
-            <h4>Add a Review</h4>
-
-            <div class="row">
-              <form class="col s12" method="POST" action="/api/reviews" id="form-modal">
-                <div class="row modal-form-row">
-                  <div class="input-field col s12">
-                    <input id="username" type="text" class="validate">
-                    <label for="username">Your Name</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <textarea id="user-review" type="text" class="materialize-textarea validate"></textarea>
-                    <label for="user-review">Your Review</label>
-                  </div>
-                  <div class="modal-footer">
-                    <input type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" id="submit-btn">
-                  </div>
-                </div>  
-              </form>
-            </div>
+  <section id="listing-section">
+    <script id="listing-template" type="text/x-handlebars-template" type="text/javascript"> 
+      <div class="parallax-container">
+    <div class="parallax"><img src="{{image}}" alt="{{name}}"></div>  
+    <h1 id="name-heading">{{name}}</h1>
+        <div class="row">
+          <div class="main-nav col m5 offset-m7">
+            <ul id="listing-navbar">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">View Happy Hours</a></li>
+              <li><a href="#">About Us</a></li>  
+            </ul>
           </div>
         </div>
+      </div>
+      <div class="section white">
+        <div class="row">
+          <div class="col m6 offset-m3">
+            <h2 class="header">Happy Hour Specials</h2>
+            <ul class="col m6 offset-m3" id="happy-hour-info">
+              <li>{{daysOfWeek}}</li>
+              <li>{{hours}}</li>
+              <br>
+              <li>
+                <ul>Drink Specials:
+                {{#each alcoholType}}
+                  <li>{{this}}</li>
+                {{/each}}
+                </ul>
+              </li>
+            <br>
+          </div>
+          <div class="col m2 offset-m3 general-info" id="listing-location">
+              <p><i class="small material-icons">location_on</i>{{address}}</p>
+          </div>
+          <div class="col m2 general-info" id="listing-price">
+              <p id="pricing">{{price}}</p>
+          </div>
+          <div class="col m2 general-info" id="listing-website">
+              <a href="{{website}}"><p><i class="small material-icons">info_outline</i>{{name}} Website</p></a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    </div>
+    <section id="reviews-section" class="container">
+      <div class="parallax-container">
+        <div class="parallax"></div>
+        <div class="row">
+          <h2 id="reviews-heading">Reviews</h2>
+        </div>
+        <div class="row" id="review-list">
+        </div>
+      </div>
+    </section>
+   
+    <section id="modal-section">
+      <div class="section white">
+        <div class="row">
+        
+        
+        <!-- Modal Trigger -->
+          <button class="waves-effect waves-light btn modal-trigger col m2 offset-m5 review-button" data-target="modal1" id="add-review-btn">Add Review</button>
+
+          <!-- Modal Structure -->
+          <div id="modal1" class="modal">
+            <div class="modal-content">
+              <h4>Add a Review</h4>
+
+              <div class="row">
+                <form class="col s12" method="POST" action="/api/reviews" id="form-modal">
+                  <div class="row modal-form-row">
+                    <div class="input-field col s12">
+                      <input id="username" type="text" class="validate">
+                      <label for="username">Your Name</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="user-review" type="text" class="materialize-textarea validate"></textarea>
+                      <label for="user-review">Your Review</label>
+                    </div>
+                    <div class="modal-footer">
+                      <input type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" id="submit-btn">
+                    </div>
+                  </div>  
+                </form>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </script>
   </section>
 
+
+
   <!-- moved the template down here because we don't want to mistakenly manipulate the DOM where it will affect the template -->
-  <script id="review-template" type="text/x-handlebars-template">  
+  <script id="review-template" type="text/x-handlebars-template" type="text/javascript">  
     <div class="card col m4" id="one-review" data-id="{{_id}}">
       <div class="card-content">
         <p class="chip" id="username-chip">{{username}}</p>

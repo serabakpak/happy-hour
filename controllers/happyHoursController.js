@@ -15,33 +15,43 @@ var happyHourList = [{
   review: [],
   daysOfWeek: 'Everyday',
   hours: '5PM-6:30PM',
-  alcoholType: '$4 beer, $6 wine',
+  alcoholType: [
+      '$7 cocktails',
+      '$1 off beers',
+      '1/2 off wine'
+      ],
   address: '655 Divisadero Street',
   website: "http://barcrudo.com/"
   },
   {
   _id: 1,
   name: 'Palm House',
-  image: String,
+  image: "http://www.palmhousesf.com/images/1-7.jpg?crc=256437448",
   location: 'Marina/Cow Hollow',
   price: '$$',
   review: [],
   daysOfWeek: 'Tuesday-Friday',
   hours: '5PM-6:30PM',
-  alcoholType: '$7 cocktails, $1 off beers, 1/2 off wine',
+  alcoholType: [
+      '$7 cocktails',
+      '$1 off beers',
+      '1/2 off wine'
+      ],
   address:'2032 Union Street',
   website: 'http://www.palmhousesf.com/palm-house-san-francisco-menus.html'
   },
   {
   _id: 2,
   name: 'Reed & Greenough',
-  image: String,
+  image: "https://s3-media3.fl.yelpcdn.com/bphoto/lTfKYVgtKaQZExK8nC3cIA/o.jpg",
   location: 'Marina',
   price: '$$',
   review: [],
   daysOfWeek: 'Tuesday-Friday, Sunday',
   hours: '5PM-7PM',
-  alcoholType: '1/2 off wine',
+  alcoholType: [
+    '1/2 off wine'
+    ],
   address: '3251 Scott Street',
   website: "http://reedandgreenough.com/"
   }]
