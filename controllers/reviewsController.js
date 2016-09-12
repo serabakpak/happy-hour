@@ -1,6 +1,3 @@
-/************
- * DATABASE *
- ************/
 var db = require('../models');
 
 // GET /api/reviews
