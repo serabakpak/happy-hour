@@ -2,7 +2,7 @@
 $(document).ready(function() {
 	console.log('app.js loaded!');
 	//parallax effect:
-  // $('.parallax').parallax();
+  $('.parallax').parallax();
 
  //render 1 listing for show.html:
   // Get the ID from the URL 
