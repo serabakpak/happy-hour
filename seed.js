@@ -1,5 +1,8 @@
 // This file allows us to seed our application with data
 // simply run: `node seed.js` from the root of this project folder.
+//0921fc8ab674bbd5acddb54f044045a6ef89955d
+  //0921fc8ab674bbd5acddb54f044045a6ef89955d
+  //0921fc8ab674bbd5acddb54f044045a6ef89955d
 
 var db = require('./models');
 
@@ -23,8 +26,6 @@ var happyHoursList = [{
   location: 'NoPa',
   price: '$$$',
   review: [],
-  //review: [a, b, c],
-  //0921fc8ab674bbd5acddb54f044045a6ef89955d
   daysOfWeek: 'Everyday',
   hours: '5PM-6:30PM',
   alcoholType: [
@@ -47,11 +48,9 @@ var happyHoursList = [{
       '$1 off beers',
       '1/2 off wine'
       ],
-  //review: [],
   daysOfWeek: 'Tuesday-Friday',
   hours: '5PM-6:30PM',
   alcoholType: '$7 cocktails, $1 off beers, 1/2 off wine',
-  //0921fc8ab674bbd5acddb54f044045a6ef89955d
   address:'2032 Union Street',
   website: 'http://www.palmhousesf.com/palm-house-san-francisco-menus.html'
   },
@@ -61,8 +60,6 @@ var happyHoursList = [{
   location: 'Marina',
   price: '$$',
   review: [],
-  //review: [],
-  //0921fc8ab674bbd5acddb54f044045a6ef89955d
   daysOfWeek: 'Tuesday-Friday, Sunday',
   hours: '5PM-7PM',
   alcoholType: [
