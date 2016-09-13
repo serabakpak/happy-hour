@@ -26,14 +26,7 @@ function show(req, res) {
     console.log('one HH in show in happyhours controller',foundHappyHour);
     res.json(foundHappyHour);
  });
-  // var id = req.params.happyHourId;
-  //  for (var i = 0; i < happyHoursList.length; i++) {
-  //    if (happyHoursList[i]._id == id) {
-  //      var result = happyHoursList[i];
-  //    }
- 
-  //  }
-  //  res.json(result);  
+
 };
 
 
