@@ -72,7 +72,7 @@ $(document).ready(function() {
 
 			$.ajax({
 				method: 'PUT',
-				url: '/api/reviews/' + reviewId,
+				url: '/api/happyHours/' + happyHourId + '/reviews/'+ reviewId,
 				data: data,
 				success: onUpdateSuccess,
 				error: updateError

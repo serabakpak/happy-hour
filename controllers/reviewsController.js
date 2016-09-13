@@ -64,19 +64,40 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
-  console.log('updating via controller', req.body);
-  db.Review.findById(req.params.reviewId, function(err, foundReview){
-    if(err){
-      console.log('error with updating in controller', err);
+  db.HappyHour.findById(req.params.happyHourId, function(err, foundHappyHour) {
+    console.log(foundHappyHour);
+    // we've got the happy hour, now find the review within it
+    var correctReview = foundHappyHour.review.id(req.params.reviewId);
+    if (correctReview) {
+      console.log('req.body from update function in reviewsController',req.body);
+      
+      correctReview.userReview = req.body.userReview;
+      foundHappyHour.save(function(err, saved) {
+        console.log('UPDATED', correctReview, 'IN ', saved.reviews);
+        res.json(correctReview);
+      });
+    } else {
+      res.send(404);
     }
-    foundReview.userReview = req.body.userReview;
-    foundReview.save(function(err, savedReview){
-      if (err) {
-        console.log('issue with saving updates via controller', err);
-      }
-      res.json(savedReview);
-    });
-  });
+  });  
+
+
+
+
+
+  // console.log('updating via controller', req.body);
+  // db.Review.findById(req.params.reviewId, function(err, foundReview){
+  //   if(err){
+  //     console.log('error with updating in controller', err);
+  //   }
+  //   foundReview.userReview = req.body.userReview;
+  //   foundReview.save(function(err, savedReview){
+  //     if (err) {
+  //       console.log('issue with saving updates via controller', err);
+  //     }
+  //     res.json(savedReview);
+  //   });
+  // });
 }
 
 // export public methods here
