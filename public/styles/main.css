@@ -1,142 +1,27 @@
-/**********LISTINGS PAGE************/
 body {
-	background-color: #78909c;
-	font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
-#listing-image img{
-	-webkit-filter:brightness(50%);
-	-moz-filter:brightness(50%);
-	filter:url(#brightness);
-	filter:brightness(50%);
+.nav {
+    float: right;
+    list-style: none;
+    margin-top: 25px;
 }
 
+.nav li {
+    display: inline-block;
+    margin-right: 40px;   
+}
 
-#name-heading {
+.nav a {
 	color: white;
-	position: absolute;
-	margin-top: 15%;
+	font-size: 20px;
+}
+
+h2 {
 	text-align: center;
 }
 
-#listing-navbar li {
-	display: inline;
-	padding: 1em;
-}
-
-#listing-navbar li a {
-	color: white;
-	font-size: 1.25em;
-}
-
-#listing {
-	font-size: 1.5em;
-}
-
-/**********INFO section************/
-.header {
-	text-align: center;
-	color: #37474f;
-}
-
-#happy-hour-info {
-	text-align: center;
-	font-size: 1.5em;
-	color: #37474f;
-}
-
-.general-info {
-	text-align: center;
-	border-left: 1px solid black;
-	vertical-align: text-bottom;
-	color: #37474f;
-	height: 4.5em;
-	font-size: 1.15em;
-}
-
-#pricing {
-	font-size: 1.35em;
-}
-
-#listing-location {
-	border-left: none;
-}
-
-#listing-price span {
-	display: none;
-}
-
-#listing-website a {
-	text-decoration: none;
-	color: #37474f;
-}
-
-
-
-/**********REVIEW PAGE************/
-#reviews-heading {
-	text-align: center;
-	color: white;
-	font-size: 4em;
-}
-
-.review-button {
-	text-align: center;
-	background-color: #78909c;
-}
-
-.review-button:hover {
-	background-color: #455a64;
-}
-
-
-.update-btn-div {
-	display: inline;
-}
-
-.delete-btn-div {
-	display: inline;
-}
-
-#updateInput {
-	background-color: #cfd8dc;
-	color: #37474f;
-}
-
-#username-chip {
-	color: #37474f;
-}
-
-#review-blockquote {
-	color: #37474f;
-}
-
-blockquote{
-  border-left: 5px solid #fff; /* Just change the color value and that's it*/
-}
-
-#review-blockquote {
-font-family: Georgia, serif;
-font-size: 18px;
-width: 500px;
-font-style: italic;
-margin: 0.25em 0;
-padding: 0.25em 40px;
-position: relative;
-color: #37474f;
-}
-
-#review-blockquote:before {
-display: block;
-content: "\201C";
-font-size: 80px;
-position: absolute;
-left: -10px;
-top: -20px;
-color: #7a7a7a;
-}
-
-/**********MODAL************/
-#modal-section {
-	background-color: white;
+.nav a:hover {
+	color: #90a4ae;
 }

@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>CHANGE ME</title>
+  <title>The Best Hour</title>
+  
   <!-- STYLESHEETS -->
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
   <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/show.css">
 
   <!-- VENDOR SCRIPTS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -20,22 +21,25 @@
 
   <!-- APPLICATION SCRIPTS -->
   <script src="/scripts/show.js"></script>
+  
+  
+  
 </head>
 
 <body>
   <section id="listing-section">
     <script id="listing-template" type="text/x-handlebars-template" type="text/javascript"> 
       <div class="parallax-container" data-happyhour-id="{{_id}}">
-    <div id="listing-image" class="parallax"><img src="{{showImage}}" alt="{{name}}"></div>  
-    <h1 id="name-heading">{{name}}</h1>
+        <div id="listing-image" class="parallax"><img src="{{showImage}}" alt="{{name}}"></div>  
+        <h1 id="name-heading">{{name}}</h1>
         <div class="row">
-          <div class="main-nav col m5 offset-m7">
-            <ul id="listing-navbar">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">View Happy Hours</a></li>
-              <li><a href="#">About Us</a></li>  
+          
+            <ul class="nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/#viewhappyhours-section">View Happy Hours</a></li>
+              <li><a href="/api">API Doc</a></li>  
             </ul>
-          </div>
+          
         </div>
       </div>
       <div class="section white">
@@ -69,10 +73,6 @@
       </script>
     </section>
 
-
-
-
-
     <section id="reviews-section" class="container">
       <div class="parallax-container">
         <div class="parallax"></div>
@@ -87,7 +87,6 @@
     <section id="modal-section">
       <div class="section white">
         <div class="row">
-        
         
         <!-- Modal Trigger -->
           <button class="waves-effect waves-light btn modal-trigger col m2 offset-m5 review-button" data-target="modal1" id="add-review-btn">Add Review</button>

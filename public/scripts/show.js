@@ -140,7 +140,7 @@ function onCreateSuccess(json) {
 function onUpdateSuccess(updatedReview){
 	console.log('response to update', updatedReview);
 	//hide save and cancel buttons
-	$('.save-cancel-btn').toggleClass('hidden');
+	// $('.save-cancel-btn').toggleClass('hidden');
 	var updatedReviewId = updatedReview._id;
 	$('[data-id=' + updatedReviewId + ']').remove();
 	renderReview(updatedReview);

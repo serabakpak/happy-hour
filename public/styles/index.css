@@ -1,14 +1,13 @@
-body {
-    font-family: 'Raleway', sans-serif;
-}
-
-
 header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/happyhour.jpeg);
     background-size: cover;
     background-position: center;
     height: 100vh; /*100% of viewport*/ 
     background-attachment: fixed;
+}
+
+hr {
+    width: 100%;
 }
 
 .main-nav {
@@ -28,37 +27,51 @@ header {
 }
 
 h1 {
-	font-size: 8em;
+	font-size: 7em;
     font-weight: bolder;
-    font-family: 'Covered By Your Grace', cursive;
+    
+}
+
+h2 {
+    margin: 1em 0;
 }
 
 .hero-text-box {
     position: absolute;
-    width: 85%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
 }
 
-h2 {
-	text-align: center;
-    margin: 1em 0;
-}
-
 img {
 	width: 100%;
 }
 
+#viewhappyhours-section {
+    color: #263238;
+}
 #happy-hour-section {
-    height: 100vh;
+    height: 25em;
 }
 
 #happy-hour-section h3, p{
-    color: black;
+    color: #263238;
 }
 
 h3 {
     font-size: 2em;
+}
+
+footer {
+    background-color: #263238;
+    height: 10em;
+
+}
+
+footer p {
+    color: #888;
+    text-align: center;
+    margin-top: 10em;
+    padding-top: 4em;
 }

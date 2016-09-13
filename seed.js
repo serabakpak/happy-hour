@@ -5,7 +5,7 @@
 var happyHoursList = [{    
     name: 'Bar Crudo',
     indexImage: 'https://media-cdn.tripadvisor.com/media/photo-s/01/1a/19/87/open-kitchen-at-bar-crudo.jpg',
-    showImage: 'http://reedandgreenough.com/wp-content/uploads/2012/04/slider_facade2.jpg',
+    showImage: 'http://i.imgur.com/iEgv74g.jpg',
     location: 'NoPa',
     price: '$$$',
     review: [],
@@ -21,7 +21,7 @@ var happyHoursList = [{
   {
     name: 'Palm House',
     indexImage: 'https://cdn2.vox-cdn.com/thumbor/NM7zJSvCiZvOd5jxo__-90GaZHM=/899x600/cdn0.vox-cdn.com/uploads/chorus_asset/file/771162/IMG_4196-3260434216-O.0.jpg',
-    showImage: 'http://reedandgreenough.com/wp-content/uploads/2012/04/slider_facade2.jpg',
+    showImage: 'http://i.imgur.com/cU5mIuC.jpg',
     location: 'Marina/Cow Hollow',
     price: '$$',
     review: [],
@@ -41,7 +41,7 @@ var happyHoursList = [{
   {   
     name: 'Reed & Greenough',
     indexImage: 'https://cdn2.vox-cdn.com/uploads/chorus_image/image/49253693/6093536605_2dd5daae84_o.0.0.jpg',
-    showImage: 'http://reedandgreenough.com/wp-content/uploads/2012/04/slider_facade2.jpg',
+    showImage: 'http://i.imgur.com/yTjBaEp.jpg',
     location: 'Marina',
     price: '$$',
     review: [],
@@ -76,16 +76,13 @@ happyHoursList.forEach(function(happyHour){
 });
 
 db.HappyHour.remove({}, function(err, happyHours){
-
   db.HappyHour.create(happyHoursList, function(err, happyHours){
     if (err) { return console.log('ERROR', err); }
     console.log("all happyHours:", happyHours);
     console.log("created", happyHours.length, "happyHours");
-    
-
     process.exit();
+    
     db.HappyHour.review.remove({}, function(err, reviews){
-
       db.HappyHour.review.create(happyHoursList.review, function(err, reviews){
         if (err) { return console.log('ERROR', err); }
         console.log("all reviews:", reviews);

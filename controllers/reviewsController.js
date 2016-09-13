@@ -9,7 +9,7 @@ function show(req, res) {
   // find happyHour in db by id
   db.HappyHour.findOne({ _id: happyHourId }, function (err, foundHappyHour) {
     if (err || foundHappyHour ===  null) {
-      res.send(404);
+      res.sendStatus(404);
     } else {
       console.log('one HH ',foundHappyHour);
       res.json(foundHappyHour.review);
