@@ -1,10 +1,10 @@
-# Happy Hour
+# The Best Hour
 
 Here we created our first full stack web application designed to allow users to view happy hours in San Francisco.  Users are able to read reviews, add their own, update and delete their reviews.
 
 Feel free to fork / star / watch for your own personal use.
 
-See the published project at [Happy Hour](https://morning-spire-17654.herokuapp.com "Happy Hour")
+See the published project at [The Best Hour](https://morning-spire-17654.herokuapp.com "The Best Hour")
 
 ##Technologies Used
 
