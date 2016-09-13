@@ -23,7 +23,7 @@ function show(req, res) {
 	// find happyHour in db by id
 	db.HappyHour.findOne({ _id: happyHourId }, function (err, foundHappyHour) {
 	  
-    console.log('one HH ',foundHappyHour);
+    console.log('one HH in show in happyhours controller',foundHappyHour);
     res.json(foundHappyHour);
  });
   // var id = req.params.happyHourId;

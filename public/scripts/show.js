@@ -86,12 +86,14 @@ $(document).ready(function() {
 	  	$('#review-list').on('click', '#delete-btn', function(e) {
 		    // console.log('clicked delete button to', '/api/reviews/'+$(this).attr('data-id'));
 
-		    console.log(e);
+		    console.log('delete event in show.js',e);
 		    var reviewId = $(this).closest('.delete-button').attr('data-id');
-		    console.log('reviewId', reviewId);
+		    console.log('deleted reviewId', reviewId);
+		    var deleteUrl = '/api/happyHours/' + happyHourId + '/reviews/'+ reviewId;
+		    console.log (deleteUrl);
 		    $.ajax({
 		      method: 'DELETE',
-		      url: '/api/reviews/'+ reviewId,
+		      url: deleteUrl,
 		      success: onDeleteSuccess,	
 		      error: deleteError
 		      

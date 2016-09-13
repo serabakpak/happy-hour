@@ -8,9 +8,12 @@ function show(req, res) {
   console.log('happyHourId ', happyHourId);
   // find happyHour in db by id
   db.HappyHour.findOne({ _id: happyHourId }, function (err, foundHappyHour) {
-    
-    console.log('one HH ',foundHappyHour);
-    res.json(foundHappyHour.review);
+    if (err || foundHappyHour ===  null) {
+      res.send(404);
+    } else {
+      console.log('one HH ',foundHappyHour);
+      res.json(foundHappyHour.review);
+    }
   });
 }
 
@@ -33,9 +36,30 @@ function create(req, res) {
 
 
 function destroy(req, res) {
-  db.Review.findOneAndRemove({ _id: req.params.reviewId }, function(err, foundReview){
-  // note you could send just send 204, but we're sending 200 and the deleted entity
-  res.json(foundReview);
+  // console.log(req.params.happyHourId)
+  db.HappyHour.findOne({ _id: req.params.happyHourId }, function(err, foundHappyHour){
+    // note you could send just send 204, but we're sending 200 and the deleted entity
+    if (err) {
+      console.log("error deleting ", err);
+      res.send(404);
+    } else {
+      console.log('foundHappyHour for delete in reviewsController', foundHappyHour);
+      var correctReview = foundHappyHour.review.id(req.params.reviewId);
+      console.log('correct review from destroy reviews controller', correctReview);
+      // res.json({ reviewDeleted: correctReview });
+
+      if (correctReview) {
+        correctReview.remove();    
+        foundHappyHour.save(function(err, saved) {
+          console.log('REMOVED', correctReview.username, 'FROM', saved.reviews);
+          res.json(correctReview);
+        });
+      }
+      else {
+        console.log('destroy error is 404')
+        res.send(404);
+      }
+    }
   });
 }
 
@@ -47,13 +71,13 @@ function update(req, res) {
     }
     foundReview.userReview = req.body.userReview;
     foundReview.save(function(err, savedReview){
-      if(err) {
+      if (err) {
         console.log('issue with saving updates via controller', err);
       }
       res.json(savedReview);
-      });
     });
-  }
+  });
+}
 
 // export public methods here
 module.exports = {
