@@ -72,7 +72,7 @@ $(document).ready(function() {
 
 			$.ajax({
 				method: 'PUT',
-				url: '/api/reviews/' + reviewId,
+				url: '/api/happyHours/' + happyHourId + '/reviews/'+ reviewId,
 				data: data,
 				success: onUpdateSuccess,
 				error: updateError
@@ -86,12 +86,14 @@ $(document).ready(function() {
 	  	$('#review-list').on('click', '#delete-btn', function(e) {
 		    // console.log('clicked delete button to', '/api/reviews/'+$(this).attr('data-id'));
 
-		    console.log(e);
+		    console.log('delete event in show.js',e);
 		    var reviewId = $(this).closest('.delete-button').attr('data-id');
-		    console.log('reviewId', reviewId);
+		    console.log('deleted reviewId', reviewId);
+		    var deleteUrl = '/api/happyHours/' + happyHourId + '/reviews/'+ reviewId;
+		    console.log (deleteUrl);
 		    $.ajax({
 		      method: 'DELETE',
-		      url: '/api/reviews/'+ reviewId,
+		      url: deleteUrl,
 		      success: onDeleteSuccess,	
 		      error: deleteError
 		      
@@ -138,7 +140,7 @@ function onCreateSuccess(json) {
 function onUpdateSuccess(updatedReview){
 	console.log('response to update', updatedReview);
 	//hide save and cancel buttons
-	$('.save-cancel-btn').toggleClass('hidden');
+	// $('.save-cancel-btn').toggleClass('hidden');
 	var updatedReviewId = updatedReview._id;
 	$('[data-id=' + updatedReviewId + ']').remove();
 	renderReview(updatedReview);
