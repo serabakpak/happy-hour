@@ -20,34 +20,34 @@ See the published project at [Happy Hour](https://morning-spire-17654.herokuapp.
 
 
 
-'''
-	function update(req, res) {
-	  db.HappyHour.findById(req.params.happyHourId, function(err, foundHappyHour) {
-	    console.log(foundHappyHour);
-	    // we've got the happy hour, now find the review within it
-	    var correctReview = foundHappyHour.review.id(req.params.reviewId);
-	    if (correctReview) {
-	      console.log('req.body from update function in reviewsController',req.body);
-	      correctReview.userReview = req.body.userReview;
-	      foundHappyHour.save(function(err, saved) {
-	        console.log('UPDATED', correctReview, 'IN ', saved.reviews);
-	        res.json(correctReview);
-	      });
-	    } 
-	    else {
-	      res.send(404);
-	    }
-	  }); 
+```
+function update(req, res) {
+  db.HappyHour.findById(req.params.happyHourId, function(err, foundHappyHour) {
+    console.log(foundHappyHour);
+    // we've got the happy hour, now find the review within it
+    var correctReview = foundHappyHour.review.id(req.params.reviewId);
+    if (correctReview) {
+      console.log('req.body from update function in reviewsController',req.body);
+      correctReview.userReview = req.body.userReview;
+      foundHappyHour.save(function(err, saved) {
+        console.log('UPDATED', correctReview, 'IN ', saved.reviews);
+        res.json(correctReview);
+      });
+    } 
+    else {
+      res.send(404);
+    }
+  }); 
 
-'''
+```
 
-'''
-	  // Get the ID from the URL 
-	  //i.e. get '/happyHours/0'
-	  pathname = window.location.pathname;
-	  //replace '/happyHours/' with empty string so '/happyHours/0' --> '0'
-	  happyHourId = pathname.replace("/happyHours/",""); 
-'''	  
+```
+// Get the ID from the URL 
+//i.e. get '/happyHours/0'
+pathname = window.location.pathname;
+//replace '/happyHours/' with empty string so '/happyHours/0' --> '0'
+happyHourId = pathname.replace("/happyHours/",""); 
+```	  
 
 ##Screenshots
 ![Home Page Screenshot](public/images/Screenshot1.png?raw=true)
