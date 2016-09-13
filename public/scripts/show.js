@@ -1,3 +1,5 @@
+var pathname;
+var happyHourId;
 
 $(document).ready(function() {
 	console.log('app.js loaded!');
@@ -6,14 +8,14 @@ $(document).ready(function() {
  //render 1 listing for show.html:
   // Get the ID from the URL 
   //i.e. get '/happyHours/0'
-  var pathname = window.location.pathname;
+  pathname = window.location.pathname;
 
   //replace '/happyHours/' with empty string so '/happyHours/0' --> '0'
-  var id = pathname.replace("/happyHours/",""); 
+  happyHourId = pathname.replace("/happyHours/",""); 
 
   $.ajax({
     method: 'GET',
-    url: '/api/happyHours/' + id,
+    url: '/api/happyHours/' + happyHourId,
     success: onHappyHourSuccess,
     error: onHappyHourError
   }); 
@@ -24,7 +26,7 @@ $(document).ready(function() {
 	//render all reviews
 	$.ajax({
 		method: 'GET',
-		url: '/api/reviews',
+		url: '/api/happyHours/' + happyHourId + '/reviews',
 		success: renderMultipleReviews,
 		error: renderMultipleError
 	})
@@ -36,10 +38,12 @@ $(document).ready(function() {
 		var $modal = $('#modal1');
 		var $usernameField = $('#username');
 		var $userReviewField = $('#user-review');
+		// var happyHourId = $modal.data('happyhour-id');
+		// console.log(happyHourId);
 
 		$.ajax({
 			method: 'POST',
-			url: '/api/reviews',
+			url: '/api/happyHours/' + happyHourId + '/reviews',
 			data: {
 			    username: $usernameField.val(),
 			    userReview: $userReviewField.val()
@@ -47,6 +51,10 @@ $(document).ready(function() {
 			success: onCreateSuccess,
 			error: createError
 		})
+		
+
+
+
 		$(this).trigger('reset');
 		$modal.closeModal();
 	})
@@ -113,7 +121,7 @@ function renderOneListing(listing) {
 }
 
 function renderMultipleReviews(json) {
-	// console.log(json);
+	console.log('rendering multiple reviews in show.js',json);
 	json.forEach(function(review) {
 		//console.log(review);
  		renderReview(review);
@@ -146,7 +154,7 @@ function onDeleteSuccess(json) {
 }
 
 function renderReview(review) {
-	// console.log('review:', review);
+	console.log('renderReview in show.js:', review);
 	var reviewSource = $('#review-template').html();
 	// console.log(reviewSource);
 	var reviewTemplate = Handlebars.compile(reviewSource);

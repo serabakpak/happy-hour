@@ -42,8 +42,8 @@ app.get('/api/happyHours', controllers.happyHours.index);
 app.get('/api/happyHours/:happyHourId', controllers.happyHours.show);
 
 
-app.get('/api/reviews', controllers.reviews.index);
-app.post('/api/reviews', controllers.reviews.create);
+app.get('/api/happyHours/:happyHourId/reviews', controllers.reviews.show);
+app.post('/api/happyHours/:happyHourId/reviews', controllers.reviews.create);
 app.put('/api/reviews/:reviewId', controllers.reviews.update);
 app.delete('/api/reviews/:reviewId', controllers.reviews.destroy);
 

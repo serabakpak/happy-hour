@@ -8,7 +8,7 @@ var happyHoursList = [{
     showImage: 'http://reedandgreenough.com/wp-content/uploads/2012/04/slider_facade2.jpg',
     location: 'NoPa',
     price: '$$$',
-    //review: [],
+    review: [],
     daysOfWeek: 'Everyday',
     hours: '5PM-6:30PM',
     alcoholType: [
@@ -24,7 +24,7 @@ var happyHoursList = [{
     showImage: 'http://reedandgreenough.com/wp-content/uploads/2012/04/slider_facade2.jpg',
     location: 'Marina/Cow Hollow',
     price: '$$',
-    //review: [],
+    review: [],
     daysOfWeek: 'Tuesday-Friday',
     hours: '5PM-6:30PM',
     alcoholType: [
@@ -44,7 +44,7 @@ var happyHoursList = [{
     showImage: 'http://reedandgreenough.com/wp-content/uploads/2012/04/slider_facade2.jpg',
     location: 'Marina',
     price: '$$',
-    //review: [],
+    review: [],
     daysOfWeek: 'Tuesday-Friday, Sunday',
     hours: '5PM-7PM',
     alcoholType: [
@@ -69,11 +69,11 @@ var reviewsList = [{
   }
 ];
 
-// // add all the same reviews to Happy Hour list:
-// happyHoursList.forEach(function(happyHour){
-//   happyHour.review = reviewsList;
-//   console.log('happyHour is ', happyHour);
-// });
+// add all the same reviews to each Happy Hour in our Happy Hours List:
+happyHoursList.forEach(function(happyHour){
+  happyHour.review = reviewsList;
+  console.log('happyHour is ', happyHour);
+});
 
 db.HappyHour.remove({}, function(err, happyHours){
 
@@ -84,9 +84,9 @@ db.HappyHour.remove({}, function(err, happyHours){
     
 
     process.exit();
-    db.Review.remove({}, function(err, reviews){
+    db.HappyHour.review.remove({}, function(err, reviews){
 
-      db.Review.create(reviewsList, function(err, reviews){
+      db.HappyHour.review.create(happyHoursList.review, function(err, reviews){
         if (err) { return console.log('ERROR', err); }
         console.log("all reviews:", reviews);
         console.log("created", reviews.length, "reviews");
@@ -97,6 +97,4 @@ db.HappyHour.remove({}, function(err, happyHours){
   });
 
 });
-
-
-// 
+ 
