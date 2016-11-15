@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-	console.log('app.js loaded!');
+	console.log('index.controller.js loaded!');
 
   // render multiple listings for homepage
   $.ajax({
@@ -29,7 +29,7 @@ function renderListing(happyHour) {
 }
 
 function renderMultipleListings(listings) {
-  console.log('renderMultListings in app.js', listings);
+  console.log('renderMultListings in index.controller.js', listings);
   listings.forEach(function(listing) {
     renderListing(listing);
   });

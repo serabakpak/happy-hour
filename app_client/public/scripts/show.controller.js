@@ -2,7 +2,7 @@ var pathname;
 var happyHourId;
 
 $(document).ready(function() {
-	console.log('app.js loaded!');
+	console.log('index.controller.js loaded!');
 
 
  //render 1 listing for show.html:
@@ -86,7 +86,7 @@ $(document).ready(function() {
 	  	$('#review-list').on('click', '#delete-btn', function(e) {
 		    // console.log('clicked delete button to', '/api/reviews/'+$(this).attr('data-id'));
 
-		    console.log('delete event in show.js',e);
+		    console.log('delete event in show.controller.js',e);
 		    var reviewId = $(this).closest('.delete-button').attr('data-id');
 		    console.log('deleted reviewId', reviewId);
 		    var deleteUrl = '/api/happyHours/' + happyHourId + '/reviews/'+ reviewId;
@@ -123,7 +123,7 @@ function renderOneListing(listing) {
 }
 
 function renderMultipleReviews(json) {
-	console.log('rendering multiple reviews in show.js',json);
+	console.log('rendering multiple reviews in show.controller.js',json);
 	json.forEach(function(review) {
 		//console.log(review);
  		renderReview(review);
@@ -156,7 +156,7 @@ function onDeleteSuccess(json) {
 }
 
 function renderReview(review) {
-	console.log('renderReview in show.js:', review);
+	console.log('renderReview in show.controller.js:', review);
 	var reviewSource = $('#review-template').html();
 	// console.log(reviewSource);
 	var reviewTemplate = Handlebars.compile(reviewSource);
