@@ -1,7 +1,7 @@
 angular
-	.module('the-best-hour', ['ngRoute'])
+	.module('theBestHour', ['ngRoute'])
 	.config(config);
-
+	
 config.$inject = ['$routeProvider', '$locationProvider'];
 function config($routeProvider, $locationProvider) {
 	$routeProvider
@@ -20,6 +20,6 @@ function config($routeProvider, $locationProvider) {
 
 	$locationProvider.html5Mode({
 		enabled: true,
-		requireBase: true
+		requireBase: false
 	});
 }

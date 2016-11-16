@@ -1,50 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>The Best Hour</title>
-	<!-- STYLESHEETS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Permanent+Marker|Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/index.css">
-
-
-    <!-- VENDOR SCRIPTS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-
-    <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/index.controller.js"></script>
-</head>
-
-
-<body>
-	<header>
-	   <div class="hero-text-box">
-	   		<hr>
-	   		<h1>The Best Hour</h1>
-	   		<hr>
-	   </div>
-	</header>
-	<section class="container" id="viewhappyhours-section">
-		<div class="row">
-			<h2>Happy Hours in SF</h2>	
-		</div>	
-		<div class="row" id="happy-hour-section">
-			<script id="happy-hour-template" type="text/x-handlebars-template">
-				<a href="/happyHours/{{_id}}">
-					<div class="col m4 card-panel hoverable">
-						<img src="{{indexImage}}" alt="{{name}}">
-						<h3>{{name}}</h3>
-						<p>{{location}}</p>
-						<p>{{price}}</p>
-					</div>
-				</a>
-			</script>
+<header>
+   <div class="hero-text-box">
+   		<hr>
+   		<h1>The Best Hour</h1>
+   		<hr>
+   </div>
+</header>
+<section class="container" id="viewhappyhours-section">
+	<div class="row">
+		<h2>Happy Hours in SF</h2>	
+	</div>	
+	<div class="row" id="happy-hour-section" ng-controller="IndexController as indexCtrl">
+		<div ng-repeat="happyHours in indexCtrl.happyHours">
+			<a ng-href="/happyHours/{{happyHours._id}}">
+				<div class="col m4 card-panel hoverable">
+					<img ng-src="{{happyHours.indexImage}}" alt="{{happyHours.name}}">
+					<h3>{{happyHours.name}}</h3>
+					<p>{{happyHours.location}}</p>
+					<p>{{happyHours.price}}</p>
+				</div>
+			</a>
 		</div>
-	</section>
-</body>
-</html>
+	</div>
+</section>

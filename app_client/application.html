@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="the-best-hour">
+<html lang="en" ng-app="theBestHour">
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/application.js"></script>
+    <script type="text/javascript" src="application.js"></script>
+    <script type="text/javascript" src="./public/scripts/index.controller.js"></script>
+
+    <base href="/">
 </head>
 
 
@@ -33,8 +36,11 @@
          	</ul>
 	      </div>
 	   </div>
-<footer>
-    <p>Copyright &copy; 2016 by Laura & Sera. All rights reserved.</p>
+    </header>
+    <div ng-view></div>
+    {{ 2+2 }}
+    <footer>
+        <p>Copyright &copy; 2016 by Laura & Sera. All rights reserved.</p>
     </footer>
 </body>
 </html>
