@@ -19,28 +19,26 @@
 
     <!-- APPLICATION SCRIPTS -->
     <script type="text/javascript" src="application.js"></script>
-    <script type="text/javascript" src="./public/scripts/index.controller.js"></script>
+    <script type="text/javascript" src="/scripts/index.controller.js"></script>
 
     <base href="/">
 </head>
 
+<body>	
+  <div class="nav-bar main-nav">
+    <div class="row">  
+     	<ul class="nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#viewhappyhours-section">View Happy Hours</a></li>
+        <li><a href="/api">API Doc</a></li>  
+     	</ul>
+    </div>
+  </div>
 
-<body>
-	<header>
-	   <div class="nav-bar main-nav">
-	      <div class="row">  
-         	<ul class="nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#viewhappyhours-section">View Happy Hours</a></li>
-            <li><a href="api">API Doc</a></li>  
-         	</ul>
-	      </div>
-	   </div>
-    </header>
-    <div ng-view></div>
-    {{ 2+2 }}
-    <footer>
-        <p>Copyright &copy; 2016 by Laura & Sera. All rights reserved.</p>
-    </footer>
+  <div ng-view></div>
+    
+  <footer>
+      <p>Copyright &copy; 2016 by Laura & Sera. All rights reserved.</p>
+  </footer>
 </body>
 </html>

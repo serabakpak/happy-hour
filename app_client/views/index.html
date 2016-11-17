@@ -9,15 +9,15 @@
 	<div class="row">
 		<h2>Happy Hours in SF</h2>	
 	</div>	
-	<div class="row" id="happy-hour-section" ng-controller="IndexController as indexCtrl">
-		<div ng-repeat="happyHours in indexCtrl.happyHours">
-			<a ng-href="/happyHours/{{happyHours._id}}">
-				<div class="col m4 card-panel hoverable">
-					<img ng-src="{{happyHours.indexImage}}" alt="{{happyHours.name}}">
-					<h3>{{happyHours.name}}</h3>
-					<p>{{happyHours.location}}</p>
-					<p>{{happyHours.price}}</p>
-				</div>
+	<div class="row" id="happy-hour-section">
+		<div ng-repeat="happyHour in indexCtrl.happyHours" class="col m4 card-panel hoverable">
+			<a ng-href="/happyHours/{{happyHour._id}}">
+				
+				<img ng-src="{{happyHour.indexImage}}" alt="{{happyHour.name}}">
+				<h3>{{happyHour.name}}</h3>
+				<p>{{happyHour.location}}</p>
+				<p>{{happyHour.price}}</p>
+				
 			</a>
 		</div>
 	</div>

@@ -7,11 +7,9 @@ function index(req, res){
     if (err) {
       return console.log(err);
     };
-    console.log('get all happyhours on index',happyHours);
+    console.log('get all happyhours on index', happyHours);
     res.json(happyHours);
   });
-  // res.json(happyHoursList);
-
 
 };
 
@@ -29,9 +27,7 @@ function show(req, res) {
 
 };
 
-
-
 module.exports = {
   index: index,
-   show: show,
+  show: show,
 };
