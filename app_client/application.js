@@ -14,6 +14,11 @@ function config($routeProvider, $locationProvider) {
 			templateUrl: '/views/show.html',
 			controller: 'ShowController',
 			controllerAs: 'showCtrl'
+		})
+		.when('/happyHours/:happyHourId/reviews', {
+			templateUrl: '/views/show.html',
+			controller: 'IndexReviewsController',
+			controllerAs: 'indexReviewsCtrl'
 		}).otherwise({
 			redirectTo: '/'
 		});

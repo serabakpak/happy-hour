@@ -29,16 +29,6 @@ function ShowController($http){
 	  		console.log('rendering one error is', response);
 	  	});
 
-	  $http({
-	  	method: 'GET',
-	  	url: '/api/happyHours/' + happyHourId + '/reviews'
-	  }).then(function renderMultipleReviews(response){
-	  		console.log('rendering multiple reviews in show.controller.js', response);
-	  		vm.happyHour.reviews = response.data;
-	  	}, function renderMultipeError(error){
-	  		console.log('rendering error is', error);
-	  	});
-
 }
 
 
