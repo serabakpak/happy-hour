@@ -1,153 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title>The Best Hour</title>
-  
-  <!-- STYLESHEETS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-  <link rel="stylesheet" href="/styles/main.css">
-  <link rel="stylesheet" href="/styles/show.css">
+<section id="listing-section" ng-controller="ShowController as showCtrl">
 
-  <!-- VENDOR SCRIPTS -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
-  
+    <div class="parallax-container" data-happyhour-id="{{_id}}">
+      <div id="listing-image" class="parallax"><img ng-src="{{showCtrl.happyHour.showImage}}" alt="{{showCtrl.happyHour.name}}"></div>  
+      <h1 id="name-heading">{{showCtrl.happyHour.name}}</h1>
 
-
-  <!-- APPLICATION SCRIPTS -->
-  <script src="/scripts/show.controller.js"></script>
-  
-  
-  
-</head>
-
-<body>
-  <section id="listing-section">
-    <script id="listing-template" type="text/x-handlebars-template" type="text/javascript"> 
-      <div class="parallax-container" data-happyhour-id="{{_id}}">
-        <div id="listing-image" class="parallax"><img src="{{showImage}}" alt="{{name}}"></div>  
-        <h1 id="name-heading">{{name}}</h1>
-        <div class="row">
-          
-            <ul class="nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/#viewhappyhours-section">View Happy Hours</a></li>
-              <li><a href="/api">API Doc</a></li>  
-            </ul>
-          
-        </div>
-      </div>
-      <div class="section white">
-        <div class="row">
-          <div class="col m6 offset-m3">
-            <h2 class="header">Happy Hour Specials</h2>
-            <ul class="col m6 offset-m3" id="happy-hour-info">
-              <li>{{daysOfWeek}}</li>
-              <li>{{hours}}</li>
-              <br>
-              <li>
-                <ul>Drink Specials:
-                {{#each alcoholType}}
-                  <li>{{this}}</li>
-                {{/each}}
-                </ul>
-              </li>
+    </div>
+    <div class="section white">
+      <div class="row">
+        <div class="col m6 offset-m3">
+          <h2 class="header">Happy Hour Specials</h2>
+          <ul class="col m6 offset-m3" id="happy-hour-info">
+            <li>{{showCtrl.happyHour.daysOfWeek}}</li>
+            <li>{{showCtrl.happyHour.hours}}</li>
             <br>
-          </div>
-          <div class="col m2 offset-m3 general-info" id="listing-location">
-              <p><i class="small material-icons">location_on</i>{{address}}</p>
-          </div>
-          <div class="col m2 general-info" id="listing-price">
-              <p id="pricing">{{price}}</p>
-          </div>
-          <div class="col m2 general-info" id="listing-website">
-              <a href="{{website}}"><p><i class="small material-icons">info_outline</i>{{name}} Website</p></a>
-          </div>
+            <li>
+              <ul ng-repeat="happyHour in happyHour">Drink Specials:
+                <li>{{showCtrl.happyHour.alcoholType}}</li>
+              </ul>
+            </li>
+          <br>
         </div>
-      </div>
-      </script>
-    </section>
-
-    <section id="reviews-section" class="container">
-      <div class="parallax-container">
-        <div class="parallax"></div>
-        <div class="row">
-          <h2 id="reviews-heading">Reviews</h2>
+        <div class="col m2 offset-m3 general-info" id="listing-location">
+            <p><i class="small material-icons">location_on</i>{{showCtrl.happyHour.address}}</p>
         </div>
-        <div class="row" id="review-list">
+        <div class="col m2 general-info" id="listing-price">
+            <p id="pricing">{{showCtrl.happyHour.price}}</p>
         </div>
-      </div>
-    </section>
-   
-    <section id="modal-section">
-      <div class="section white">
-        <div class="row">
-        
-        <!-- Modal Trigger -->
-          <button class="waves-effect waves-light btn modal-trigger col m2 offset-m5 review-button" data-target="modal1" id="add-review-btn">Add Review</button>
-
-          <!-- Modal Structure -->
-          <div id="modal1" class="modal">
-            <div class="modal-content">
-              <h4>Add a Review</h4>
-
-              <div class="row">
-                <form class="col s12" method="POST" action="/api/reviews" id="form-modal">
-                  <div class="row modal-form-row">
-                    <div class="input-field col s12">
-                      <input id="username" type="text" class="validate" required>
-                      <label for="username">Your Name</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="user-review" type="text" class="materialize-textarea validate" required></textarea>
-                      <label for="user-review">Your Review</label>
-                    </div>
-                    <div class="modal-footer">
-                      <input type="submit" class="modal-action waves-effect waves-green btn-flat" id="submit-btn">
-                    </div>
-                  </div>  
-                </form>
-              </div>
-            </div>
-          </div>
-
-      </div>
-    
-  </section>
-
-
-
-  <!-- moved the template down here because we don't want to mistakenly manipulate the DOM where it will affect the template -->
-  <script id="review-template" type="text/x-handlebars-template" type="text/javascript">  
-    <div class="card col m4" id="one-review" data-id="{{_id}}">
-      <div class="card-content">
-        <p class="chip" id="username-chip">{{username}}</p>
-        <blockquote id="review-blockquote"><span></span>{{userReview}}</blockquote>
-        <div class="update-delete-btn">
-        <!-- <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}"> -->
-          <button class="update-button btn waves-effect waves-light review-button" data-target="#update-{{_id}}" id="update-btn"><span class="activator">Update</span></button>
-        <!-- </a> -->
-        <!-- <a href="javascript:void(0)" class="delete-review"> -->
-          <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{_id}}">Delete</button>
-        <!-- </a> -->
-      </div>
-      </div>
-      <div class="card-reveal collapse" id="update-{{_id}}">
-        <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-        <div class="save-cancel-btn hidden">
-          <input id="updateInput" value="{{userReview}}">
-          <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{_id}}">Save</button>
+        <div class="col m2 general-info" id="listing-website">
+            <a ng-href="{{showCtrl.happyHour.website}}"><p><i class="small material-icons">info_outline</i>{{showCtrl.happyHour.name}} Website</p></a>
         </div>
       </div>
     </div>
-  </script>
-</body>
+
+  </section>
+
+  <section id="reviews-section" class="container">
+    <div class="parallax-container">
+      <div class="parallax"></div>
+      <div class="row">
+        <h2 id="reviews-heading">Reviews</h2>
+      </div>
+      <div class="row" id="review-list">
+      </div>
+    </div>
+  </section>
+ 
+  <section id="modal-section">
+    <div class="section white">
+      <div class="row">
+      
+      <!-- Modal Trigger -->
+        <button class="waves-effect waves-light btn modal-trigger col m2 offset-m5 review-button" data-target="modal1" id="add-review-btn">Add Review</button>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>Add a Review</h4>
+
+            <div class="row">
+              <form class="col s12" method="POST" action="/api/reviews" id="form-modal">
+                <div class="row modal-form-row">
+                  <div class="input-field col s12">
+                    <input id="username" type="text" class="validate" required>
+                    <label for="username">Your Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="user-review" type="text" class="materialize-textarea validate" required></textarea>
+                    <label for="user-review">Your Review</label>
+                  </div>
+                  <div class="modal-footer">
+                    <input type="submit" class="modal-action waves-effect waves-green btn-flat" id="submit-btn">
+                  </div>
+                </div>  
+              </form>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  
+</section>
+
+
+
+<!-- moved the template down here because we don't want to mistakenly manipulate the DOM where it will affect the template -->
+<div ng-repeat="review in showCtrl.happyHours">
+<script id="review-template" type="text/x-handlebars-template" type="text/javascript">  
+  <div class="card col m4" id="one-review" data-id="{{_id}}">
+    <div class="card-content">
+      <p class="chip" id="username-chip">{{review.username}}</p>
+      <blockquote id="review-blockquote"><span></span>{{review.userReview}}</blockquote>
+      <div class="update-delete-btn">
+      <!-- <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}"> -->
+        <button class="update-button btn waves-effect waves-light review-button" data-target="#update-{{_id}}" id="update-btn"><span class="activator">Update</span></button>
+      <!-- </a> -->
+      <!-- <a href="javascript:void(0)" class="delete-review"> -->
+        <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{_id}}">Delete</button>
+      <!-- </a> -->
+    </div>
+    </div>
+    <div class="card-reveal collapse" id="update-{{_id}}">
+      <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+      <div class="save-cancel-btn hidden">
+        <input id="updateInput" value="{{userReview}}">
+        <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{_id}}">Save</button>
+      </div>
+    </div>
+  </div>
+</script>
+</div>

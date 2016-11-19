@@ -23,3 +23,5 @@ function config($routeProvider, $locationProvider) {
 		requireBase: false
 	});
 }
+
+// $('.parallax').parallax();
