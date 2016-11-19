@@ -41,6 +41,33 @@
         <h2 id="reviews-heading">Reviews</h2>
       </div>
       <div class="row" id="review-list">
+
+        <div ng-controller="IndexReviewsController as indexReviewsCtrl">
+          <div ng-repeat="review in indexReviewsCtrl.reviews">
+            <div class="card col m4" id="one-review" data-id="{{_id}}">
+              <div class="card-content">
+                <p class="chip" id="username-chip">{{review.username}}</p>
+                <blockquote id="review-blockquote"><span></span>{{review.userReview}}</blockquote>
+                <div class="update-delete-btn">
+                <!-- <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}"> -->
+                  <button class="update-button btn waves-effect waves-light review-button" data-target="#update-{{_id}}" id="update-btn"><span class="activator">Update</span></button>
+                <!-- </a> -->
+                <!-- <a href="javascript:void(0)" class="delete-review"> -->
+                  <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{_id}}">Delete</button>
+                <!-- </a> -->
+              </div>
+              </div>
+              <div class="card-reveal collapse" id="update-{{_id}}">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                <div class="save-cancel-btn hidden">
+                  <input id="updateInput" value="{{userReview}}">
+                  <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{_id}}">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -82,34 +109,3 @@
     </div>
   
 </section>
-
-
-
-<!-- moved the template down here because we don't want to mistakenly manipulate the DOM where it will affect the template -->
-<div ng-controller="IndexReviewsController as indexReviewsCtrl">
-<div ng-repeat="review in indexReviewsCtrl.reviews">
-
-  <div class="card col m4" id="one-review" data-id="{{_id}}">
-    <div class="card-content">
-      <p class="chip" id="username-chip">{{review.username}}</p>
-      <blockquote id="review-blockquote"><span></span>{{review.userReview}}</blockquote>
-      <div class="update-delete-btn">
-      <!-- <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}"> -->
-        <button class="update-button btn waves-effect waves-light review-button" data-target="#update-{{_id}}" id="update-btn"><span class="activator">Update</span></button>
-      <!-- </a> -->
-      <!-- <a href="javascript:void(0)" class="delete-review"> -->
-        <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{_id}}">Delete</button>
-      <!-- </a> -->
-    </div>
-    </div>
-    <div class="card-reveal collapse" id="update-{{_id}}">
-      <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-      <div class="save-cancel-btn hidden">
-        <input id="updateInput" value="{{userReview}}">
-        <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{_id}}">Save</button>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
