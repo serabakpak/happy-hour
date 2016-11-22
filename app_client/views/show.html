@@ -49,20 +49,18 @@
                 <p class="chip" id="username-chip">{{review.username}}</p>
                 <blockquote id="review-blockquote"><span></span>{{review.userReview}}</blockquote>
                 <div class="update-delete-btn">
-                <!-- <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}"> -->
                   <button class="update-button btn waves-effect waves-light review-button" data-target="#update-{{_id}}" id="update-btn"><span class="activator">Update</span></button>
-                <!-- </a> -->
-                <!-- <a href="javascript:void(0)" class="delete-review"> -->
-                  <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{_id}}">Delete</button>
-                <!-- </a> -->
+                  <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{review.review._id}}" ng-click="indexReviewsCtrl.deleteReview(review._id);">Delete</button>
               </div>
               </div>
-              <div class="card-reveal collapse" id="update-{{_id}}">
+
+              <div class="card-reveal collapse" id="update-{{ShowReviewController.review._id}}">
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
                 <div class="save-cancel-btn hidden">
-                  <input id="updateInput" value="{{userReview}}">
-                  <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{_id}}">Save</button>
+                  <input id="updateInput" value="{{ShowReviewController.review.userReview}}" ng-model="ShowReviewController.review.userReview">
+                  <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{review.reviewId}}" ng-click="ShowReviewController.updateReview();">Save</button>
                 </div>
+
               </div>
             </div>
           </div>
@@ -77,8 +75,9 @@
       <div class="row">
       
       <!-- Modal Trigger -->
+      <div ng-controller="MaterializeController">
         <button class="waves-effect waves-light btn modal-trigger col m2 offset-m5 review-button" data-target="modal1" id="add-review-btn">Add Review</button>
-
+      </div>
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
           <div class="modal-content">
@@ -106,6 +105,25 @@
           </div>
         </div>
 
+
+
+        <!-- Modal Trigger -->
+        <div ng-controller="MaterializeController">
+        <div class="col">
+            <a class='btn' href='#demoModal' modal>Show Modal</a>
+        </div>
+        <!-- Modal Structure -->
+        <div id="demoModal" class="modal">
+            <div class="modal-content">
+                <h4>Modal header</h4>
+                <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+        </div>
+
     </div>
-  
+  </div>
 </section>

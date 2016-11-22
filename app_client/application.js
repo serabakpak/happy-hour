@@ -19,6 +19,16 @@ function config($routeProvider, $locationProvider) {
 			templateUrl: '/views/show.html',
 			controller: 'IndexReviewsController',
 			controllerAs: 'indexReviewsCtrl'
+		})
+		.when('/happyHours/:happyHourId/reviews', {
+			templateUrl: '/views/show.html',
+			controller: 'MaterializeController',
+			controllerAs: 'materializeCtrl'
+		})
+		.when('/happyHours/:happyHourId/reviews/:reviewId', {
+			templateUrl: '/views/show.html',
+			controller: 'IndexReviewsController',
+			controllerAs: 'indexReviewsCtrl'
 		}).otherwise({
 			redirectTo: '/'
 		});
@@ -29,4 +39,4 @@ function config($routeProvider, $locationProvider) {
 	});
 }
 
-// $('.parallax').parallax();
+$('.parallax').parallax();

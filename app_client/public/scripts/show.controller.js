@@ -7,6 +7,7 @@ ShowController.$inject = ['$http'];
 function ShowController($http){
 	var vm = this;
 
+
 	var pathname;
 	var happyHourId;
 
@@ -31,16 +32,6 @@ function ShowController($http){
 
 }
 
-
-	// $('.modal-trigger').leanModal();
-
-// 	//render all reviews
-// 	$.ajax({
-// 		method: 'GET',
-// 		url: '/api/happyHours/' + happyHourId + '/reviews',
-// 		success: renderMultipleReviews,
-// 		error: renderMultipleError
-// 	})
 
 // 	// create review
 
@@ -122,24 +113,6 @@ function ShowController($http){
 // //   console.log('on happy hour error is', error);
 // // }
 
-// function renderOneListing(listing) {
-//    console.log('listing:', listing);
-//   var listingSource = $('#listing-template').html();
-//   // console.log(reviewSource);
-//   var listingTemplate = Handlebars.compile(listingSource);
-//   var listingHtml = listingTemplate(listing);
-//   $('#listing-section').append(listingHtml);
-//   // console.log(reviewHtml); 
-// }
-
-// function renderMultipleReviews(json) {
-// 	console.log('rendering multiple reviews in show.controller.js',json);
-// 	json.forEach(function(review) {
-// 		//console.log(review);
-//  		renderReview(review);
-//   	}); 
-// }
-
 // function onCreateSuccess(json) {
 // 	console.log('created', json);
 // 	// allReviews.push(json);
@@ -174,11 +147,6 @@ function ShowController($http){
 // 	$('#review-list').append(reviewHtml);
 // 	// console.log(reviewHtml); 
 // }
-
-// function renderMultipleError(error) {
-// 	console.log('rendering error is', error);
-// }
-
 
 // function createError(error) {
 // 	console.log('creating error is', error);
