@@ -1,4 +1,5 @@
-var app = angular.module('theBestHour', ['ui.materialize'])
+angular
+	.module('theBestHour', ['ui.materialize'])
     .controller('MaterializeController', ["$scope", function ($scope) {
         $scope.select = {
             value: "Option1",

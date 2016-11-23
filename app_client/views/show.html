@@ -44,21 +44,22 @@
 
         <div ng-controller="IndexReviewsController as indexReviewsCtrl">
           <div ng-repeat="review in indexReviewsCtrl.reviews">
-            <div class="card col m4" id="one-review" data-id="{{_id}}">
+            <div class="card col m4" id="one-review" data-id="{{review.review._id}}">
               <div class="card-content">
                 <p class="chip" id="username-chip">{{review.username}}</p>
-                <blockquote id="review-blockquote"><span></span>{{review.userReview}}</blockquote>
+                <blockquote id="review-blockquote" ng-bind="review.userReview"><span></span>{{review.userReview}}</blockquote>
                 <div class="update-delete-btn">
-                  <button class="update-button btn waves-effect waves-light review-button" data-target="#update-{{_id}}" id="update-btn"><span class="activator">Update</span></button>
+                  <button class="update-button btn waves-effect waves-light review-button" data-target="#update-{{review.review._id}}" id="update-btn"><span class="activator">Update</span></button>
                   <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{review.review._id}}" ng-click="indexReviewsCtrl.deleteReview(review._id);">Delete</button>
               </div>
               </div>
 
-              <div class="card-reveal collapse" id="update-{{ShowReviewController.review._id}}">
+              <div class="card-reveal collapse" id="update-{{review.review._id}}">
+                <p class="chip" id="username-chip">{{review.username}}</p>
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
                 <div class="save-cancel-btn hidden">
-                  <input id="updateInput" value="{{ShowReviewController.review.userReview}}" ng-model="ShowReviewController.review.userReview">
-                  <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{review.reviewId}}" ng-click="ShowReviewController.updateReview();">Save</button>
+                  <input id="updateReview" placeholder="{{review.userReview}}" ng-model="review.userReview">
+                  <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{review.review._id}}" ng-click="indexReviewsCtrl.updateReview(review)">Save</button>
                 </div>
 
               </div>
