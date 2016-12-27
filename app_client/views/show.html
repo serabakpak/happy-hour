@@ -105,26 +105,13 @@
             </div>
           </div>
         </div>
-
-
-
-        <!-- Modal Trigger -->
-        <div ng-controller="MaterializeController">
-        <div class="col">
-            <a class='btn' href='#demoModal' modal>Show Modal</a>
-        </div>
-        <!-- Modal Structure -->
-        <div id="demoModal" class="modal">
-            <div class="modal-content">
-                <h4>Modal header</h4>
-                <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
-        </div>
-        </div>
-
+        
     </div>
   </div>
 </section>
+
+<script>
+$(document).ready(function() {
+  $('.modal-trigger').leanModal();
+});
+</script>
