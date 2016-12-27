@@ -80,7 +80,7 @@ function update(req, res) {
       res.send(404);
     }
   });  
-
+}
 
 // export public methods here
 module.exports = {
