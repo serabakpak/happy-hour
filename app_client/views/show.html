@@ -58,7 +58,7 @@
                 <p class="chip" id="username-chip">{{review.username}}</p>
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
                 <div class="save-cancel-btn hidden">
-                  <input id="updateReview" placeholder="{{review.userReview}}" ng-model="review.userReview">
+                  <input id="updateReview" placeholder="{{review.userReview}}" ng-model="review.userReview" type="text">
                   <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{review.review._id}}" ng-click="indexReviewsCtrl.updateReview(review)">Save</button>
                 </div>
 
