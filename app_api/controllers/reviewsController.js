@@ -23,7 +23,7 @@ function show(req, res) {
 function create(req, res) {
   
   db.HappyHour.findById(req.params.happyHourId, function(err, foundHappyHour) {
-    console.log('req.body of create',req.body);
+    console.log('req.body of create', req.body);
     var newReview = new db.Review(req.body);  // dangerous, in a real app we'd validate the incoming data
     foundHappyHour.review.push(newReview);
     foundHappyHour.save(function(err, savedHappyHour) {
@@ -77,7 +77,7 @@ function update(req, res) {
         res.json(correctReview);
       });
     } else {
-      res.send(404);
+      res.send('not updating', 404);
     }
   });  
 }

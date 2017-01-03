@@ -47,7 +47,7 @@
             <div class="card col m4" id="one-review" data-id="{{review.review._id}}">
               <div class="card-content">
                 <p class="chip" id="username-chip">{{review.username}}</p>
-                <blockquote id="review-blockquote" ng-bind="review.userReview"><span></span>{{review.userReview}}</blockquote>
+                <blockquote id="review-blockquote"><span></span>{{review.userReview}}</blockquote>
                 <div class="update-delete-btn">
                   <button class="update-button btn waves-effect waves-light review-button" data-target="#update-{{review.review._id}}" id="update-btn"><span class="activator">Update</span></button>
                   <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{review.review._id}}" ng-click="indexReviewsCtrl.deleteReview(review._id);">Delete</button>
@@ -59,7 +59,7 @@
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
                 <div class="save-cancel-btn hidden">
                   <input id="updateReview" placeholder="{{review.userReview}}" ng-model="review.userReview" type="text">
-                  <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{review.review._id}}" ng-click="indexReviewsCtrl.updateReview(review)">Save</button>
+                  <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{review.review._id}}" ng-click="indexReviewsCtrl.updateReview(review);">Save</button>
                 </div>
 
               </div>
@@ -76,7 +76,7 @@
       <div class="row">
       
       <!-- Modal Trigger -->
-      <div ng-controller="MaterializeController">
+      <div>
         <button class="waves-effect waves-light btn modal-trigger col m2 offset-m5 review-button" data-target="modal1" id="add-review-btn">Add Review</button>
       </div>
         <!-- Modal Structure -->
@@ -85,16 +85,16 @@
             <h4>Add a Review</h4>
 
             <div class="row">
-              <form class="col s12" method="POST" action="/api/reviews" id="form-modal">
+              <form class="col s12" id="form-modal" ng-controller="IndexReviewsController as indexReviewsCtrl" ng-submit="indexReviewsCtrl.createReview(newReview)" novalidate>
                 <div class="row modal-form-row">
                   <div class="input-field col s12">
-                    <input id="username" type="text" class="validate" required>
+                    <input type="text" ng-model="indexReviewsCtrl.newReview.username" id="username" class="validate" required>
                     <label for="username">Your Name</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                    <textarea id="user-review" type="text" class="materialize-textarea validate" required></textarea>
+                    <textarea type="text" ng-model="indexReviewsCtrl.newReview.userReview" id="user-review" class="materialize-textarea validate" required></textarea>
                     <label for="user-review">Your Review</label>
                   </div>
                   <div class="modal-footer">

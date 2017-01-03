@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 // serve static files from public folder
 app.use(express.static(__dirname + '/app_client'));
 app.use(express.static(path.join(__dirname, 'app_client', 'public')));
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var controllers = require('./app_api/controllers');

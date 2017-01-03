@@ -15,21 +15,21 @@ function config($routeProvider, $locationProvider) {
 			controller: 'ShowController',
 			controllerAs: 'showCtrl'
 		})
-		.when('/happyHours/:happyHourId/reviews/:reviewId', {
-			templateUrl: '/views/show.html',
-			controller: 'IndexReviewsController',
-			controllerAs: 'indexReviewsCtrl'
-		})
 		.when('/happyHours/:happyHourId/reviews', {
 			templateUrl: '/views/show.html',
-			controller: 'MaterializeController',
-			controllerAs: 'materializeCtrl'
+			controller: 'IndexReviewsController',
+			controllerAs: 'indexReviewsCtrl'
 		})
 		.when('/happyHours/:happyHourId/reviews/:reviewId', {
 			templateUrl: '/views/show.html',
 			controller: 'IndexReviewsController',
 			controllerAs: 'indexReviewsCtrl'
 		})
+		// .when('/happyHours/:happyHourId/reviews', {
+		// 	templateUrl: '/views/show.html',
+		// 	controller: 'MaterializeController',
+		// 	controllerAs: 'materializeCtrl'
+		// })
 		.otherwise({
 			redirectTo: '/'
 		});
