@@ -48,18 +48,18 @@
               <div class="card-content">
                 <p class="chip" id="username-chip">{{review.username}}</p>
                 <blockquote id="review-blockquote"><span></span>{{review.userReview}}</blockquote>
-                <div class="update-delete-btn">
+                <div class="update-delete-btn" ng-controller="ShowReviewController as showReviewCtrl">
                   <button class="update-button btn waves-effect waves-light review-button" data-target="#update-{{review.review._id}}" id="update-btn"><span class="activator">Update</span></button>
-                  <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{review.review._id}}" ng-click="indexReviewsCtrl.deleteReview(review._id);">Delete</button>
+                  <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{review.review._id}}" ng-click="showReviewCtrl.deleteReview(review);">Delete</button>
               </div>
               </div>
 
-              <div class="card-reveal collapse" id="update-{{review.review._id}}">
+              <div class="card-reveal collapse" ng-controller="ShowReviewController as showReviewCtrl" id="update-{{review.review._id}}">
                 <p class="chip" id="username-chip">{{review.username}}</p>
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
                 <div class="save-cancel-btn hidden">
-                  <input id="updateReview" placeholder="{{review.userReview}}" ng-model="review.userReview" type="text">
-                  <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{review.review._id}}" ng-click="indexReviewsCtrl.updateReview(review);">Save</button>
+                  <input id="updateReview" placeholder="{{review.userReview}}" ng-model="showReviewCtrl.correctReview.userReview" type="text">
+                  <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{review.review._id}}" ng-click="showReviewCtrl.updateReview(review);">Save</button>
                 </div>
 
               </div>

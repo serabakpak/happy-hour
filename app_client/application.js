@@ -22,8 +22,8 @@ function config($routeProvider, $locationProvider) {
 		})
 		.when('/happyHours/:happyHourId/reviews/:reviewId', {
 			templateUrl: '/views/show.html',
-			controller: 'IndexReviewsController',
-			controllerAs: 'indexReviewsCtrl'
+			controller: 'ShowReviewController',
+			controllerAs: 'showReviewCtrl'
 		})
 		// .when('/happyHours/:happyHourId/reviews', {
 		// 	templateUrl: '/views/show.html',
