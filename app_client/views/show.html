@@ -59,7 +59,7 @@
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
                 <div class="save-cancel-btn hidden">
                   <input id="updateReview" placeholder="{{review.userReview}}" ng-model="showReviewCtrl.correctReview.userReview" type="text">
-                  <button class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{review.review._id}}" ng-click="showReviewCtrl.updateReview(review);">Save</button>
+                  <button ng-click="showReviewCtrl.updateReview(review);" class="save-button btn waves-effect waves-light review-button" id="save-btn" data-id="{{review.review._id}}"><a ng-href="#update-{{review.review._id}}">Save</a></button>
                 </div>
 
               </div>

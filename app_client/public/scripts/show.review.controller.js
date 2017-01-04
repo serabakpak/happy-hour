@@ -14,6 +14,18 @@ function ShowReviewController($http, $routeParams){
 	var reviewId;
 	var reviews;
 
+	// vm.getReview = function(review){
+	// 	console.log(review);
+	// $http({
+	//     method: 'GET',
+	//     url: '/api/happyHours/' + happyHourId + '/reviews/' + review._id
+	//   }).then(function successCallback(json) {
+	//     vm.review = json.data;
+	//     return vm.review;
+	//   }, function errorCallback(response) {
+	//     console.log('There was an error getting one review', response);
+	//   });
+	// }
 
  	//render 1 listing for show.html:
 	  // Get the ID from the URL 
@@ -35,8 +47,8 @@ function ShowReviewController($http, $routeParams){
       }).then(function onUpdateSuccess(review){
         console.log('onUpdateSuccess in index.review.controller.js', review);
         vm.review = review.data;
-        var index = vm.reviews.indexOf(correctReview);
-        vm.reviews.splice(index, 1, correctReview);
+        // var index = vm.reviews.indexOf(correctReview);
+        // vm.reviews.splice(index, 1, correctReview);
     }, function onUpdateError(error){
         console.log('updating one review error is', error);
       });
