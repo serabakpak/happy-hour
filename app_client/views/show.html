@@ -50,7 +50,7 @@
                 <blockquote id="review-blockquote"><span></span>{{review.userReview}}</blockquote>
                 <div class="update-delete-btn" ng-controller="ShowReviewController as showReviewCtrl">
                   <button class="update-button btn waves-effect waves-light review-button" data-target="#update-{{review.review._id}}" id="update-btn"><span class="activator">Update</span></button>
-                  <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{review.review._id}}" ng-click="showReviewCtrl.deleteReview(review);">Delete</button>
+                  <button class="delete-button btn waves-effect waves-light review-button" id="delete-btn" data-id="{{review.review._id}}" ng-click="showReviewCtrl.deleteReview(review);"><a ng-href="#one-review">Delete</a></button>
               </div>
               </div>
 

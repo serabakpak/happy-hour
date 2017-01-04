@@ -45,25 +45,4 @@ function IndexReviewsController($http, $routeParams){
       });
     }
 
-
-    // vm.updateReview = function(review) {
-    //   console.log(review);
-    //   $http({
-    //     method: 'PUT',
-    //     url: '/api/happyHours/' + happyHourId + '/reviews/' + review._id,
-    //     data: review
-    //   }).then(function onUpdateSuccess(correctReview){
-    //       console.log('onUpdateSuccess in show.review.controller.js', correctReview);
-    //       // vm.review = correctReview;
-    //       // var index = vm.reviews.indexOf(correctReview);
-    //       // vm.reviews.splice(index, 1, correctReview);
-    //   }, function onUpdateError(error){
-    //       console.log('updating one review error is', error);
-    //   });
-    // }
-
-
-  
-   
-      
 }

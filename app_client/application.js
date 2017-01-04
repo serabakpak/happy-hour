@@ -25,11 +25,6 @@ function config($routeProvider, $locationProvider) {
 			controller: 'ShowReviewController',
 			controllerAs: 'showReviewCtrl'
 		})
-		// .when('/happyHours/:happyHourId/reviews', {
-		// 	templateUrl: '/views/show.html',
-		// 	controller: 'MaterializeController',
-		// 	controllerAs: 'materializeCtrl'
-		// })
 		.otherwise({
 			redirectTo: '/'
 		});

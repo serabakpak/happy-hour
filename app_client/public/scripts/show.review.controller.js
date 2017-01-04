@@ -6,26 +6,10 @@ ShowReviewController.$inject = ['$http', '$routeParams'];
 
 function ShowReviewController($http, $routeParams){
 	var vm = this;
-	// var reviewId = $routeParams.id;
-
-
 	var pathname;
 	var happyHourId;
 	var reviewId;
 	var reviews;
-
-	// vm.getReview = function(review){
-	// 	console.log(review);
-	// $http({
-	//     method: 'GET',
-	//     url: '/api/happyHours/' + happyHourId + '/reviews/' + review._id
-	//   }).then(function successCallback(json) {
-	//     vm.review = json.data;
-	//     return vm.review;
-	//   }, function errorCallback(response) {
-	//     console.log('There was an error getting one review', response);
-	//   });
-	// }
 
  	//render 1 listing for show.html:
 	  // Get the ID from the URL 
@@ -77,7 +61,6 @@ function ShowReviewController($http, $routeParams){
             console.log('rendering error is', error);
         });
       }
-
 	 
 }
 
